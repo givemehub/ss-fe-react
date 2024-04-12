@@ -7,17 +7,24 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#05-jsx-runtime-plugin <폴더_이름>
+npx degit yamoo9/ss-fe-react#06-jsx-markup <폴더_이름>
 ```
 
-## JSX 컴파일 & Vite 리액트용 플러그인
+## JSX 마크업
 
-Vite 개발 환경에서 기본 지원하는 JSX를 학습하고, 리액트용 플러그인을 확장하는 방법을 살펴봅니다.
+JSX 사용이 필수는 아니지만, 리액트 개발에 많은 편의성을 제공합니다.
+JSX를 사용해 마크업을 구성하는 방법을 학습합니다.
 
-1. JSX란? ([참고](https://facebook.github.io/jsx/))
-1. JSX 컴파일 도구
-    - [Babel](https://babeljs.io/repl#?browsers=&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=react%2Cstage-3&prettier=false&targets=&version=7.24.4&externalPlugins=&assumptions=%7B%7D)
-    - [TypeScript](https://www.typescriptlang.org/play)
-1. Vite 리액트용 플러그인 설치
-    - [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)
-    - [@vitejs/plugin-react-swc](https://www.npmjs.com/package/@vitejs/plugin-react-swc)
+- **마크업(Markup)** → 데이터 분리
+- JSX 슬롯(Slot)
+    - 기본 슬롯 (default slot)
+    - 이름이 설정된 슬롯 (named slot)
+- JSX 속성 데이터 바인딩(valid, invalid)
+- JSX 공백 문제 `{" "}` vs. HTML 공백 (`&nbsp;`)
+- JSX 주석(Comments)
+- JSX, HTML 차이점
+    - [JSX] 대소문자 구분 (엄격) vs. [HTML] 대소문자 구분 안함 (느슨)
+    - [JSX] 셀프 클로즈 (엄격) vs. [HTML] 셀프 클로즈 해도, 안해도 됨 (느슨)
+    - [JSX] 예약어 사용 못함 (엄격) vs. [HTML] 예약어가 뭐임? (느슨)
+    - [JSX] `data-*`, `aria-*` 그대로 사용 (자체적으로 인식해서 변환) vs. [HTML] `data-*`, `aria-*` 그대로 사용 (느슨)
+    - [JSX] `style` 속성 값을 객체로 설정 (엄격) vs. [HTML] `style` 속성 값을 문자로 설정 (느슨)
