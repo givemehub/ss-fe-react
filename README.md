@@ -7,16 +7,18 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#01-scaffolding-vitest <폴더_이름>
+npx degit yamoo9/ss-fe-react#03-hello-react <폴더_이름>
 ```
 
-## 테스트 환경 스캐폴딩 (with Vitest)
+## 안녕! 리액트
 
-차세대 테스팅 프레임워크 [vitest](https://vitest.dev/)를 사용해 테스트 환경을 구성합니다.
+사용자 인터페이스 빌딩을 위한 라이브러리 [React](https://react.dev/)의 작동 방식에 대해 학습합니다.
 
-1. [Vitest를 사용해야 하는 이유](https://vitest.dev/guide/why.html)
-1. vitest 패키지 설치 ([참고](https://vitest.dev/guide/#adding-vitest-to-your-project))
-1. `package.json` 파일 수정: `test`, `test:ui` 명령 추가 등록 ([참고](https://vitest.dev/guide/#writing-tests))
-1. `vite.config.js` 파일 수정 ([참고](https://vitest.dev/guide/#configuring-vitest))
-1. 유틸리티 함수 유닛 테스트 (예: `numberWithComma`, `removeSpaceHTMLString` 함수)
-1. VS Code 통합 확장 설치 ([참고](https://marketplace.visualstudio.com/items?itemName=vitest.explorer))
+1. [리액트 소개](https://react.dev)
+1. `index.html` 파일 수정
+    - 정적 마크업 코드 삭제
+    - \<noscript\> 추가
+    - \<div id="root"\> 요소 추가
+1. [ESM>CDN](https://esm.sh)으로 브라우저에서 React 앱 구성
+    - `React.createElement` API 사용법 ([참고](https://react.dev/reference/react/createElement))
+    - `ReactDOM.createRoot` API 사용법 ([참고](https://react.dev/reference/react-dom/client/createRoot))
