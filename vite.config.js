@@ -12,5 +12,8 @@ export default defineConfig(({ mode }) => {
       cors: true,
       open: true,
     },
+    test: {
+      globals: true,
+    },
   };
 });
