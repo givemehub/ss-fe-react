@@ -1,5 +1,5 @@
-import { createElement, Component } from 'react';
-import { Headline, Description, Link } from './components';
+import { Component } from 'react';
+import { Description, Headline, Link } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -22,12 +22,12 @@ class App extends Component {
     const { headline, description, link } = this.state;
     const { text: linkText, ...restLinkProps } = link;
 
-    return createElement(
-      'main',
-      { className: 'learn' },
-      createElement(Headline, {}, headline),
-      createElement(Description, {}, description),
-      createElement(Link, restLinkProps, linkText)
+    return (
+      <main className="learn">
+        <Headline>{headline}</Headline>
+        <Description>{description}</Description>
+        <Link {...restLinkProps}>{linkText}</Link>
+      </main>
     );
   }
 }
