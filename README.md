@@ -7,21 +7,16 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#01-scaffolding-vite <폴더_이름>
+npx degit yamoo9/ss-fe-react#01-scaffolding-vitest <폴더_이름>
 ```
 
-## 개발 환경 스캐폴딩 (with Vite)
+## 테스트 환경 스캐폴딩 (with Vitest)
 
-차세대 프론트엔드 개발 도구인 [vite](https://ko.vitejs.dev/)를 사용해 React 개발 환경을 구성합니다.
+차세대 테스팅 프레임워크 [vitest](https://vitest.dev/)를 사용해 테스트 환경을 구성합니다.
 
-1. [Vite를 사용해야 하는 이유](https://ko.vitejs.dev/guide/why.html)
-1. `index.html` 파일 작성 ([참고](https://ko.vitejs.dev/guide/#index-html-and-project-root))
-1. `public/react.svg` 파일 작성 ([참고](https://ko.vitejs.dev/guide/assets.html#the-public-directory))
-1. `src/styles/globals.css` 파일 작성 ([참고](./snippets/globals.css))
-1. `src/main.js` 파일 작성 ([참고](https://ko.vitejs.dev/guide/assets.html#importing-asset-as-url))
-1. vite 패키지 설치 ([참고](https://www.npmjs.com/package/vite))
-1. `package.json` 파일 수정
-    - 모듈 기본 타입 설정 ([참고](https://nodejs.org/api/packages.html#type))
-    - NPM 스크립트 명령 등록 ([참고](https://ko.vitejs.dev/guide/#command-line-interface))
-1. `vite.config.js` 파일 작성 ([참고](https://ko.vitejs.dev/config/#configure-vite))
-1. `.env.development` 파일 작성 ([참고](https://ko.vitejs.dev/guide/env-and-mode.html#env-files))
+1. [Vitest를 사용해야 하는 이유](https://vitest.dev/guide/why.html)
+1. vitest 패키지 설치 ([참고](https://vitest.dev/guide/#adding-vitest-to-your-project))
+1. `package.json` 파일 수정: `test`, `test:ui` 명령 추가 등록 ([참고](https://vitest.dev/guide/#writing-tests))
+1. `vite.config.js` 파일 수정 ([참고](https://vitest.dev/guide/#configuring-vitest))
+1. 유틸리티 함수 유닛 테스트 (예: `numberWithComma`, `removeSpaceHTMLString` 함수)
+1. VS Code 통합 확장 설치 ([참고](https://marketplace.visualstudio.com/items?itemName=vitest.explorer))
