@@ -1,7 +1,13 @@
-export function Link(props) {
+export function Link({ href, target, rel, className, children, ...restProps }) {
   return (
-    <a href={props.href} target={props.target} rel={props.rel}>
-      {props.children}
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      className={className}
+      {...restProps}
+    >
+      {children}
     </a>
   );
 }
