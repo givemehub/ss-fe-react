@@ -80,8 +80,9 @@
   "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.disableAutomaticTypeAcquisition": false,
   "typescript.suggest.autoImports": true,
-  "typescript.suggest.paths": false,
+  "typescript.suggest.paths": true,
 
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",
