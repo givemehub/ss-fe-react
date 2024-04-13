@@ -7,27 +7,17 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#07-scaffolding-component-test <폴더_이름>
+npx degit yamoo9/ss-fe-react#08-conditional-rendering <폴더_이름>
 ```
 
-## 테스팅 라이브러리
+## 조건부 렌더링
 
-컴포넌트 테스트를 위한 테스팅 환경을 구성합니다.
+컴포넌트 외부에서 전달된 데이터에 따라 조건부로 마크업을 렌더링하는 방법을 학습합니다.
 
-- 테스팅 라이브러리 ([참고](https://testing-library.com/))
-- jsdom ([참고](https://www.npmjs.com/package/jsdom))
-- Ecosystem > jest-dom ([참고](https://testing-library.com/docs/ecosystem-jest-dom))
-- Frameworks > React Testing Library ([참고](https://testing-library.com/docs/react-testing-library/intro))
-- User Interactions ([참고](https://testing-library.com/docs/user-event/intro))
-
-## 컴포넌트 테스트
-
-유지 관리가 가능하고, 견고하며 신뢰할 수 있는 테스트를 작성하는 방법을 학습합니다.
-
-- 렌더링 테스트
-- 사용자 인터랙션 테스트
-
-컴포넌트 구현(implemetation)이 아닌, 동작(behavior)을 테스트합니다.
-
-- [구현] 어떻게 구현되는 지
-- [행동] 앱에서 처리하는 일
+- if 또는 switch 문 활용
+- 제어 흐름 연산자(`&&`, `||`) 활용
+- 터너리(ternary, 삼항 연산자 식) 활용
+- nullish 병합 연산자(`??`) 활용
+- 옵셔널 체이닝(`?.`) 활용
+- 표시(show) & 감춤(hide)
+- 스크린 리더(screen reader) 지원
