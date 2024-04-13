@@ -1,7 +1,10 @@
+import { useState } from 'react';
+
 export function TermsAndConditions() {
+  const [isChecked, setIsChecked] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('폼 제출');
 
     const formData = new FormData(e.currentTarget);
     const terms = formData.get('terms');
@@ -9,13 +12,7 @@ export function TermsAndConditions() {
   };
 
   const handleChange = (e) => {
-    console.log('입력이 변경됨');
-    console.log(e.target.checked);
-  };
-
-  const handleClick = (e) => {
-    console.log('버튼이 클릭됨');
-    console.log(e.target.textContent);
+    setIsChecked(e.target.checked);
   };
 
   return (
@@ -31,11 +28,12 @@ export function TermsAndConditions() {
           type="checkbox"
           id="terms"
           name="terms"
+          checked={isChecked}
           onChange={handleChange}
         />
         <label htmlFor="terms">이용 약관에 동의합니다.</label>
       </div>
-      <button type="submit" onClick={handleClick}>
+      <button type="submit" aria-disabled={!isChecked}>
         확인
       </button>
     </form>

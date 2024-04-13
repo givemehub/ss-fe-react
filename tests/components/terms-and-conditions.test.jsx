@@ -4,30 +4,36 @@ import { render, screen } from '@testing-library/react';
 import { TermsAndConditions } from '@/components';
 
 describe('TermsAndConditions 컴포넌트', () => {
-  it('최초 렌더링', () => {
+  const renderComponent = () => {
     render(<TermsAndConditions />);
+    return {
+      heading: screen.getByRole('heading'),
+      checkbox: screen.getByRole('checkbox'),
+      button: screen.getByRole('button'),
+    };
+  };
 
-    const heading = screen.getByRole('heading');
-    expect(heading).toBeInTheDocument();
+  it('이용 약관 최초 렌더링', () => {
+    const { heading, checkbox, button } = renderComponent();
+
     expect(heading).toHaveTextContent(/이용 약관/);
-
-    const checkbox = screen.getByRole('checkbox');
-    expect(checkbox).toBeInTheDocument();
     expect(checkbox).not.toBeChecked();
-
-    const button = screen.getByRole('button');
-    expect(button).toBeInTheDocument();
     expect(button).toHaveTextContent(/확인/);
+    // expect(button).toBeDisabled();
+    expect(button).toHaveAttribute('aria-disabled', 'true');
   });
 
-  it('이용 약관 체크 후, 확인 버튼 누름', async () => {
-    render(<TermsAndConditions />);
+  it('이용 약관 체크 또는 해제 시, 확인 버튼 활성 또는 비활성화', async () => {
     const user = userEvent.setup();
+    const { checkbox, button } = renderComponent();
+    screen.debug();
 
-    const checkbox = screen.getByRole('checkbox');
     await user.click(checkbox);
+    expect(button).toHaveAttribute('aria-disabled', 'false');
+    screen.debug();
 
-    const button = screen.getByRole('button');
-    await user.click(button);
+    await user.click(checkbox);
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    screen.debug();
   });
 });
