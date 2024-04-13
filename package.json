@@ -8,7 +8,7 @@
     "dev": "vite serve",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext js --ignore-path .gitignore",
+    "lint": "eslint . --ext js,jsx --ignore-path .gitignore",
     "test": "vitest -r tests",
     "test:ui": "vitest --ui --exclude _"
   },
@@ -18,10 +18,15 @@
     "vite": "5.2.8"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "6.4.2",
+    "@testing-library/react": "15.0.1",
+    "@testing-library/user-event": "14.5.2",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/ui": "1.5.0",
     "eslint": "8.57.0",
     "eslint-plugin-react": "7.34.1",
+    "eslint-plugin-vitest": "0.5.1",
+    "jsdom": "24.0.0",
     "vitest": "1.5.0"
   }
 }

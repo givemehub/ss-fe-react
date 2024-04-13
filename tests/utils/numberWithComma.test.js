@@ -1,5 +1,5 @@
 import { it, expect, describe } from 'vitest';
-import numberWithComma from '../src/utils/numberWithComma';
+import numberWithComma from '@/utils/numberWithComma';
 
 describe('numberWithComma 테스트', () => {
   it('numberWithComma 함수 반환 값 타입은 "string"', () => {
