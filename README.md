@@ -7,31 +7,25 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#09-render-list-fragment <폴더_이름>
+npx degit yamoo9/ss-fe-react#10-responding-to-events <폴더_이름>
 ```
 
-## 렌더 리스트 & 프레그먼트 컴포넌트
+## 이벤트에 응답
 
-컴포넌트 외부에서 전달된 리스트 데이터를 순환해 마크업을 렌더링하는 방법을 학습합니다.
+사용자와 상호작용하도록 컴포넌트에 이벤트를 연결하고 응답받는 방법을 학습합니다.
 
-- 데이터 매핑
-- 렌더 리스트
-- 키(key) 속성
-- Fragment 컴포넌트
+- 이벤트 핸들링 - HTML vs. JSX
+    - HTML 속성 이름이 모두 소문자 (onclick) vs. JSX는 on* 시작하는 camelCase 포멧 (onClick)
+    - HTML 속성 값은 문자(="print()") vs. JSX는 이벤트 prop 값은 이벤트 핸들러(함수) 참조(={print})
+    - 이벤트 전파 중지(stop propagation: e.stopPropagation())
+- 이벤트 핸들링 - 이벤트 핸들러에 인수 지정(JS, Closure: (payload) => (e) => {})
 
-## 컴포넌트 테스트
+## 상호작용 테스트
 
-### UserList
+### TermsAndConditions
 
-UserList 컴포넌트 테스트 코드를 작성합니다.
+TermsAndConditions 컴포넌트를 작성한 후, 사용자와의 상호작용을 테스트 합니다.
 
-- 빈 배열이 전달된 경우, 사용자 없음을 화면에 표시
-- users 배열 데이터 리스트 렌더링
-
-### ProductImageGallary
-
-ProductImageGallary 컴포넌트 테스트 코드를 작성합니다.
-
-- 빈 배열이 전달된 경우, 아무 것도 화면에 렌더링하지 않음
-- imageUrls 배열 데이터 리스트 렌더링
-
+- \<form\> 요소 submit 이벤트 응답
+- \<input\> 요소 change 이벤트 응답
+- \<button\> 요소 click 이벤트 응답
