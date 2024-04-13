@@ -7,17 +7,31 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#08-conditional-rendering <폴더_이름>
+npx degit yamoo9/ss-fe-react#09-render-list-fragment <폴더_이름>
 ```
 
-## 조건부 렌더링
+## 렌더 리스트 & 프레그먼트 컴포넌트
 
-컴포넌트 외부에서 전달된 데이터에 따라 조건부로 마크업을 렌더링하는 방법을 학습합니다.
+컴포넌트 외부에서 전달된 리스트 데이터를 순환해 마크업을 렌더링하는 방법을 학습합니다.
 
-- if 또는 switch 문 활용
-- 제어 흐름 연산자(`&&`, `||`) 활용
-- 터너리(ternary, 삼항 연산자 식) 활용
-- nullish 병합 연산자(`??`) 활용
-- 옵셔널 체이닝(`?.`) 활용
-- 표시(show) & 감춤(hide)
-- 스크린 리더(screen reader) 지원
+- 데이터 매핑
+- 렌더 리스트
+- 키(key) 속성
+- Fragment 컴포넌트
+
+## 컴포넌트 테스트
+
+### UserList
+
+UserList 컴포넌트 테스트 코드를 작성합니다.
+
+- 빈 배열이 전달된 경우, 사용자 없음을 화면에 표시
+- users 배열 데이터 리스트 렌더링
+
+### ProductImageGallary
+
+ProductImageGallary 컴포넌트 테스트 코드를 작성합니다.
+
+- 빈 배열이 전달된 경우, 아무 것도 화면에 렌더링하지 않음
+- imageUrls 배열 데이터 리스트 렌더링
+
