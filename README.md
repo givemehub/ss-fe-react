@@ -7,24 +7,41 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#06-jsx-markup <폴더_이름>
+npx degit yamoo9/ss-fe-react#07-component-test <폴더_이름>
 ```
 
-## JSX 마크업
+## 테스팅 라이브러리
 
-JSX 사용이 필수는 아니지만, 리액트 개발에 많은 편의성을 제공합니다.
-JSX를 사용해 마크업을 구성하는 방법을 학습합니다.
+컴포넌트 테스트를 위한 테스팅 환경을 구성합니다.
 
-- **마크업(Markup)** → 데이터 분리
-- JSX 슬롯(Slot)
-    - 기본 슬롯 (default slot)
-    - 이름이 설정된 슬롯 (named slot)
-- JSX 속성 데이터 바인딩(valid, invalid)
-- JSX 공백 문제 `{" "}` vs. HTML 공백 (`&nbsp;`)
-- JSX 주석(Comments)
-- JSX, HTML 차이점
-    - [JSX] 대소문자 구분 (엄격) vs. [HTML] 대소문자 구분 안함 (느슨)
-    - [JSX] 셀프 클로즈 (엄격) vs. [HTML] 셀프 클로즈 해도, 안해도 됨 (느슨)
-    - [JSX] 예약어 사용 못함 (엄격) vs. [HTML] 예약어가 뭐임? (느슨)
-    - [JSX] `data-*`, `aria-*` 그대로 사용 (자체적으로 인식해서 변환) vs. [HTML] `data-*`, `aria-*` 그대로 사용 (느슨)
-    - [JSX] `style` 속성 값을 객체로 설정 (엄격) vs. [HTML] `style` 속성 값을 문자로 설정 (느슨)
+- 테스팅 라이브러리 ([참고](https://testing-library.com/))
+- jsdom ([참고](https://www.npmjs.com/package/jsdom))
+- Ecosystem > jest-dom ([참고](https://testing-library.com/docs/ecosystem-jest-dom))
+- Frameworks > React Testing Library ([참고](https://testing-library.com/docs/react-testing-library/intro))
+- User Interactions ([참고](https://testing-library.com/docs/user-event/intro))
+- 절대 경로 설정 ([참고](https://ko.vitejs.dev/config/shared-options.html#resolve-alias))
+- `jsconfig.json` 설정 ([참고](https://code.visualstudio.com/docs/languages/jsconfig#_jsconfig-options))
+- ESLint 구성: React 버전 명시 ([참고](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc-))
+- 테스트 환경 설정 ([참고](https://vitest.dev/config/#environment))
+- 테스트 설정 파일 작성 ([참고](https://github.com/testing-library/jest-dom?tab=readme-ov-file#with-vitest))
+
+## 테스트 목적
+
+유지 관리가 가능하고, 견고하며 신뢰할 수 있는 테스트를 작성하는 방법을 학습합니다.
+
+- 렌더링 테스트
+- 사용자 인터랙션 테스트
+
+컴포넌트 구현(implemetation)이 아닌, 동작(behavior)을 테스트합니다.
+
+- [구현] 어떻게 구현되는 지
+- [행동] 앱에서 처리하는 일
+
+## 컴포넌트 테스트 (실습)
+
+작성한 컴포넌트를 테스트하는 코드를 작성합니다.
+
+- `app.jsx`
+- `components/headline.jsx`
+- `components/description.jsx`
+- `components/link.jsx`
