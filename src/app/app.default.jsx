@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { Description, Headline, Link } from './components';
-import { getPublic } from './utils';
+import { Description, Headline, Link } from '@/components';
+import { getPublic } from '@/utils';
 
 class App extends Component {
   constructor(props) {

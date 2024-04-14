@@ -8,3 +8,25 @@
   background: rgba(var(--primary-rgb), 0.03);
   box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.1);
 }
+
+.loading,
+.error {
+  padding-block-start: 20px;
+  font-size: 12px;
+}
+
+.loading {
+  color: rgba(var(--primary-rgb), 0.85);
+
+  &::before {
+    content: '🌀 ';
+  }
+}
+
+.error {
+  color: #6c6a68;
+
+  &::before {
+    content: '⚠️ ';
+  }
+}

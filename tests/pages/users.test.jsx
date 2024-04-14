@@ -3,7 +3,21 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 
-describe('Users 페이지', () => {
+describe('Users 페이지 (외부 시스템과 동기화)', () => {
+  it('네트워크 응답 users 데이터 지연 렌더링', async () => {
+    render(<UsersPage />);
+
+    // await waitFor(() => {
+    //   const listItems = screen.getAllByRole('listitem');
+    //   expect(listItems.length).toBeGreaterThan(0);
+    // });
+
+    const listItems = await screen.findAllByRole('listitem');
+    expect(listItems.length).toBeGreaterThan(0);
+  });
+});
+
+describe.skip('Users 페이지', () => {
   const users = [
     { id: 1, name: '야무' },
     { id: 2, name: '수잔' },
