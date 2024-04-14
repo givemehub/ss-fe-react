@@ -142,4 +142,8 @@
   "tailwind-fold.unfoldIfLineSelected": true,
   "tailwind-fold.unfoldedTextOpacity": 0.9,
   "tailwind-fold.autoFold": false,
+
+  "path-intellisense.mappings": {
+    "@": "${workspaceFolder}/src"
+  }
 }
