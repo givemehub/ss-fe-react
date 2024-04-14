@@ -53,7 +53,9 @@
   "html.validate.styles": true,
 
   "css.completion.completePropertyWithSemicolon": true,
+  "css.lint.vendorPrefix": "ignore",
   "css.lint.unknownAtRules": "ignore",
+  "css.lint.unknownProperties": "ignore",
   "css.validate": false,
 
   "javascript.autoClosingTags": true,
@@ -80,6 +82,7 @@
   "typescript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.disableAutomaticTypeAcquisition": false,
   "typescript.suggest.autoImports": true,
   "typescript.suggest.paths": false,
 
@@ -101,13 +104,27 @@
 
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.wordWrap": "off",
+  "editor.codeActionsOnSave": {
+    // "source.organizeImports": "explicit",
+    // "source.addMissingImports": "explicit",
+    // "source.fixAll.eslint": "explicit",
+  },
+  
+  "path-intellisense.mappings": {
+    "@": "${workspaceFolder}/src"
+  },
 
+  "autoimport.filesToScan": "**/*.{js,jsx,ts,tsx,css,svg,jpg,jpeg,png}",
+  "autoimport.spaceBetweenBraces": true,
+  "autoimport.autoComplete": true,
+  
+  
   // "eslint.enable": false,
-
+  
   "errorLens.enabled": true,
   "errorLens.exclude": ["**/*.css"],
   "errorLens.gutterIconsEnabled": true,
-
+  
   "totalTypeScript.hideAllTips": true,
   "totalTypeScript.hideBasicTips": true,
   
