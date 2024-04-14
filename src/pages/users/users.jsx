@@ -1,8 +1,10 @@
 import { UserList, UserListCount, UserSearchBox } from '@/components';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classes from './users.module.css';
 
 export function UsersPage() {
+  const changeCountRef = useRef(0);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [users, setUsers] = useState([]);
@@ -43,18 +45,15 @@ export function UsersPage() {
   const handleChange = (search) => {
     setSearchedUsers(
       search !== 'reset'
-        ? users.filter((user) => user.name.includes(search))
+        ? users.filter((user) =>
+            user.name.toLowerCase().includes(search.toLowerCase())
+          )
         : users
     );
+
+    changeCountRef.current += 1;
+    console.log('change count', changeCountRef.current);
   };
-
-  // if (isLoading) {
-  //   return <div role="alert">데이터 로딩 중...</div>;
-  // }
-
-  // if (error) {
-  //   return <div role="alert">{error.message}</div>;
-  // }
 
   const userList = isLoading ? (
     <div role="alert" className={classes.loading}>
