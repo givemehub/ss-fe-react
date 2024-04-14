@@ -1,0 +1,10 @@
+.component {
+  position: relative;
+  width: clamp(240px, 69dvw, 480px);
+  margin-inline: auto;
+  border: 4px solid rgba(var(--white-rgb), 1);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(var(--primary-rgb), 0.03);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.1);
+}

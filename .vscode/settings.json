@@ -82,7 +82,7 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.disableAutomaticTypeAcquisition": false,
   "typescript.suggest.autoImports": true,
-  "typescript.suggest.paths": true,
+  "typescript.suggest.paths": false,
 
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features",

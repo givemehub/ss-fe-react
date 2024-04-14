@@ -1,0 +1,7 @@
+.component {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 14px;
+  color: rgba(var(--primary-rgb), 0.9);
+}

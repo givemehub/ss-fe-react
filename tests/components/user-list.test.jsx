@@ -1,6 +1,6 @@
-import { it, expect, describe } from 'vitest';
+import { UserList } from '@/components/users/user-list';
 import { render, screen } from '@testing-library/react';
-import { UserList } from '@/components/user-list';
+import { describe, expect, it } from 'vitest';
 
 describe('UserList 컴포넌트', () => {
   it('빈 배열이 전달된 경우, 사용자 없음을 화면에 표시', () => {

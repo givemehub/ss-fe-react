@@ -1,3 +1,4 @@
+import classes from './user-search-box.module.css';
 import { useId, useState } from 'react';
 
 export function UserSearchBox({ onChange }) {
@@ -19,8 +20,10 @@ export function UserSearchBox({ onChange }) {
   };
 
   return (
-    <div>
-      <label htmlFor={id}>사용자 검색</label>
+    <div className={classes.component}>
+      <label htmlFor={id} className="sr-only">
+        사용자 검색
+      </label>
       <input
         type="search"
         placeholder="사용자 이름 입력"

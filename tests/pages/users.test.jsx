@@ -1,4 +1,4 @@
-import { UsersPage } from '@/pages/users';
+import { UsersPage } from '@/pages/users/users';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';

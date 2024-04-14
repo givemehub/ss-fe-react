@@ -1,5 +1,6 @@
 import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { useState } from 'react';
+import classes from './users.module.css';
 
 export function UsersPage({ data }) {
   const [users] = useState(data ?? []);
@@ -14,10 +15,10 @@ export function UsersPage({ data }) {
   };
 
   return (
-    <>
+    <div className={classes.component}>
       <UserSearchBox onChange={handleChange} />
       <UserList users={searchedUsers} />
       <UserListCount count={searchedUsers.length} total={users.length} />
-    </>
+    </div>
   );
 }
