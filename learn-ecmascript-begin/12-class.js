@@ -41,8 +41,47 @@ const _ApiClient = (function () {
 
 // 🔶 Class 구문을 사용해 ApiClient 클래스를 작성합니다.
 // 참고: https://mzl.la/3UdwrNE
+class ApiClient {
+  // #private
+  #endpoint;
 
-const todosService = new _ApiClient(
+  constructor(endpoint) {
+    this.#endpoint = endpoint;
+  }
+
+  readAll(page = 1, pageSize = 5) {
+    return fetch(`${this.#endpoint}?_page=${page}&_limit=${pageSize}`).then(
+      (response) => response.json()
+    );
+  }
+
+  readOne(id) {
+    return fetch(`${this.#endpoint}/${id}`).then((response) => response.json());
+  }
+
+  create(data) {
+    return fetch(this.#endpoint, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+  }
+
+  update(id, data) {
+    return fetch(`${this.#endpoint}/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+  }
+
+  delete(id) {
+    return fetch(`${this.#endpoint}/${id}`, {
+      method: 'DELETE',
+    }).then((response) => response.json());
+  }
+}
+
+// const todosService = new _ApiClient(
+const todosService = new ApiClient(
   'https://jsonplaceholder.typicode.com/todos'
 );
 
@@ -69,11 +108,17 @@ run.delete = () => todosService.delete(3);
 
 async function run() {
   try {
-    const response = await run.readAll();
+    const response = await run.readOne();
+    // 서버에서 데이터 응답 -> 화면 표시
     console.log(response);
   } catch (error) {
+    // 서버에서 오류 응답 -> 화면 오류 표시
     console.error(error);
   }
 }
 
 run();
+
+// Promise, Async function
+// 리액트 앱  -> 요청 -> API 서버
+// 리액트 앱  <- 응답 <- API 서버 (성공 or 실패)
