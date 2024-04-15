@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// template literal
+// template literal (ECMAScript 2015)
 // - 데이터 + 템플릿 = 마크업 스트링
 // - 템플릿 리터럴 구문을 사용해 마크업 스트링 생성
 // --------------------------------------------------------------------------
@@ -31,13 +31,39 @@ function renderTable(data) {
 }
 
 // 🔶 renderTableString 함수를 작성하세요.
+function renderTableString(data) {
+  // 데이터 + 템플릿 스트링 = 마크업 스트링
+  // 보간(interpolation)
+  // `string ${data}`
+  // `string ${expression}`
+  // array => string
+  // array method (reduce)
+  return /* html */ `
+    <table class="table">
+      <caption class="sr-only">${data.caption}</caption>
+      ${data.rows.reduce(function (htmlString, row) {
+        return (
+          htmlString +
+          `
+            <tr>
+              <th>${row.headline}</th>
+              <td>${numberWithComma(row.content)}원</td>
+            </tr>
+          `
+        );
+      }, '')}
+    </table>
+  `;
+}
 
 function run() {
-  const renderedResult = renderTable(koreanFoods);
-  return renderedResult;
+  const renderedResult = renderTableString(koreanFoods);
+  return removeSpaceHTMLString(renderedResult);
 }
 
 console.log(run());
+
+console.log(Object.is(renderTable(koreanFoods), run()));
 
 // --------------------------------------------------------------------------
 // utils
