@@ -15,7 +15,9 @@
 
 // Web Browser env.
 // import * as VirtualModule from './lib/index.js';
-import { createElement, createRoot } from './lib/index.js';
+import * as Virtual from './lib/index.js';
+
+const { createElement, createRoot } = Virtual;
 
 // 버츄얼 DOM 엘리먼트
 // like React
@@ -55,3 +57,31 @@ const virtualDomRoot = createRoot(rootElement);
 // console.log(virtualDomRoot);
 
 virtualDomRoot.render(appElement);
+
+/* -------------------------------------------------------------------------- */
+
+// 실제 DOM 엘리먼트
+// 웹 표준 DOM API
+// HTMLDivElement class
+// new HTMLDivElement()
+const div = document.createElement('div');
+div.setAttribute('role', 'button');
+div.textContent = 'this is a button';
+console.log(div.nodeType === document.ELEMENT_NODE);
+
+document.body.insertAdjacentElement('beforeend', div);
+
+// React or Vue.js
+// 가상 DOM 엘리먼트
+// Virtual.createElement
+const vDiv = Virtual.createElement(
+  'div',
+  {
+    role: 'button',
+  },
+  'this is a virtual dom button'
+);
+
+console.log(vDiv.nodeType === document.ELEMENT_NODE);
+
+// document.body.insertAdjacentElement('beforeend', vDiv);
