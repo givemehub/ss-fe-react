@@ -17,11 +17,7 @@ function combineArray() {
 
   // 🔶 전개 구문을 사용해 spreadCombineList 배열 병합 코드를 작성하세요.
   // 참고: https://mzl.la/43TCLgA | https://mzl.la/3VTzEDh | https://mzl.la/3vC07ec
-  const spreadCombineList = [
-    ...countList.slice(0, 2),
-    ...numberList,
-    countList.at(-1),
-  ];
+  const spreadCombineList = [...countList.slice(0, 2), ...numberList, countList.at(-1)];
   console.log(spreadCombineList);
 
   // 아래 결과 값이 true가 나와야 합니다.
@@ -38,12 +34,13 @@ function combineObject() {
     loop: true,
   };
 
+  // ES5 (2009)
   const combineOptions = Object.assign({}, defaultOptions, customOptions);
   console.log(combineOptions);
 
   // 🔶 전개 구문을 사용해 spreadCombineOptions 객체 병합 코드를 작성하세요.
   // 참고: https://mzl.la/43TCLgA
-  const spreadCombineOptions = {};
+  const spreadCombineOptions = { ...defaultOptions, ...customOptions };
   console.log(spreadCombineOptions);
 
   // 아래 결과 값이 true가 나와야 합니다.
@@ -51,8 +48,8 @@ function combineObject() {
 }
 
 function run() {
-  combineArray();
-  // combineObject();
+  // combineArray();
+  combineObject();
 }
 
 run();
