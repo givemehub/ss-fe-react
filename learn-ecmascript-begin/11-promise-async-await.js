@@ -28,15 +28,36 @@ function delay(callback, time = 1000) {
 // practice();
 
 // --------------------------------------------------------------------------
-
 // Promise
 // 참고: https://mzl.la/3d1He5h
 // 🔶 delayPromise 함수를 작성합니다.
-const delayPromise = () => {};
+const delayPromise = (timeout = 1000) => {
+  const promise = new Promise((resolve) => {
+    setTimeout(() => resolve({ message: 'on fullfilment' }), timeout);
+  });
+
+  return promise;
+};
 
 function practice2() {
   console.log('start!');
   // 🔶 delayPromise 함수를 사용해 1초마다 로그를 남기도록 작성합니다.
+  delayPromise()
+    .then(() => {
+      console.log('1s');
+      return delayPromise(); // delay (1s)
+    })
+    .then(() => {
+      console.log('2s');
+      return delayPromise(); // delay (1s)
+    })
+    .then(() => {
+      console.log('3s');
+      return delayPromise(); // delay (1s)
+    })
+    .then(() => {
+      console.log('4s');
+    });
 }
 
 // practice2();
@@ -44,8 +65,20 @@ function practice2() {
 // Async Await
 // 참고: https://mzl.la/49EvJxn
 
-function practice3() {
+async function practice3() {
   // 🔶 비동기 함수를 사용해 delayPromise 함수가 1초마다 로그를 남기도록 작성합니다.
+  console.log('start!');
+
+  // Promise 객체가 결과 값을 반환할 때까지 대기
+  await delayPromise();
+  console.log('1s');
+  await delayPromise();
+  console.log('2s');
+  await delayPromise();
+  console.log('3s');
+  await delayPromise();
+  console.log('4s');
+  console.log('end');
 }
 
 // practice3();
@@ -73,12 +106,18 @@ const promise2 = () =>
     });
   });
 
-const promise3 = Promise.reject('❌ 오류 발생!');
+// const promise3 = Promise.reject('❌ 오류 발생!');
 
 // Promise.all
-// 참고: https://mzl.la/49EvJxn
+// 참고: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
 // 🔶 Promise.all 메서드를 사용해 모든 Promise가 실행된 이후 콜백되도록 실습을 진행합니다.
+Promise.all([promise1(), promise2()]).then((values) => {
+  console.log(values);
+});
 
 // Promise.race
-// 참고: https://mzl.la/49EvJxn
+// 참고: https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
 // 🔶 Promise.race 메서드를 사용해 응답이 가장 빠른 Promise 값만 출력되도록 실습을 진행합니다.
+Promise.race([promise2(), promise1()]).then((fastValue) => {
+  console.log(fastValue);
+});
