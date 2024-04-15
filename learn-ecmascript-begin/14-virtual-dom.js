@@ -14,6 +14,44 @@
 // └── index.js
 
 // Web Browser env.
-import * as VirtualModule from './lib/index.js';
+// import * as VirtualModule from './lib/index.js';
+import { createElement, createRoot } from './lib/index.js';
 
-console.log(VirtualModule);
+// 버츄얼 DOM 엘리먼트
+// like React
+const headingElement = createElement(
+  'h1',
+  { id: 'big-headline', className: 'heading', lang: 'en-UK' },
+  '🍥',
+  ' ',
+  'ECMAScript is JavaScript'
+);
+
+const appElement = createElement(
+  'div',
+  { className: 'app' },
+  headingElement,
+  createElement(
+    'p',
+    {},
+    'React is ',
+    createElement(
+      'strong',
+      {},
+      createElement('abbr', { title: 'JavaScript' }, 'JS'),
+      ' Library'
+    )
+  )
+);
+
+// console.log(headingElement);
+
+// 실제 DOM 엘리먼트
+const rootElement = document.getElementById('root');
+// console.log(rootElement);
+
+// 가상 DOM 루트 생성
+const virtualDomRoot = createRoot(rootElement);
+// console.log(virtualDomRoot);
+
+virtualDomRoot.render(appElement);

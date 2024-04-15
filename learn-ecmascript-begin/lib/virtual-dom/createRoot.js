@@ -1,5 +1,5 @@
-import VirtualDomRoot from './VirtualDomRoot.js';
+import { VirtualDomRoot } from './VirtualDomRoot.js';
 
-export function createRoot(rootElement) {
+export function createRoot(rootElement /* actual dom element */) {
   return new VirtualDomRoot(rootElement);
 }
