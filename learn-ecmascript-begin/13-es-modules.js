@@ -1,5 +1,15 @@
+// Node.js runtime env. -> Common JS Modules
+// Web Standards => ES Modules
+
+import numberWithComma from './utils/numberWithComma.js';
+import { removeSpaceHTMLString } from './utils/removeSpaceHTMLString.js';
+import { shuffle } from './utils/shuffle.js';
+
+import * as utilsModule from './utils/index.js';
+
 // --------------------------------------------------------------------------
-// ES Modules
+// (ES)ECMAScript Modules (2015)
+// JavaScript Modules
 
 // 🔶 utils 폴더에 아래 유틸리티 함수를 각 파일에 작성하고, 내보내기 구문을 설정합니다.
 // 참고: https://mzl.la/3VRmved | https://mzl.la/4aSP27c
@@ -9,28 +19,6 @@
 // ├── numberWithComma.js
 // ├── removeSpaceHTMLString.js
 // └── shuffle.js
-
-/**@type {(n: number) => string} */
-function numberWithComma(n) {
-  return n.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-}
-
-/** @type {(htmlString: string) => string} */
-function removeSpaceHTMLString(htmlString) {
-  return htmlString.replace(/\s+<|\n|>\s+/g, function ($1) {
-    return $1.indexOf('<') > -1 ? '<' : $1.indexOf('>') > -1 ? '>' : '';
-  });
-}
-
-/**@type {(list: any[]) => any[]} */
-function shuffle(list) {
-  let _ = [...list];
-  for (let i = _.length - 1; i > 0; --i) {
-    let k = Math.floor(Math.random() * (i + 1));
-    [_[k], _[i]] = [_[i], _[k]];
-  }
-  return _;
-}
 
 // --------------------------------------------------------------------------
 
