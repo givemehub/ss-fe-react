@@ -1,8 +1,9 @@
 // --------------------------------------------------------------------------
-// iterable → iterator
+// iteration = iterable , iterator
 //
 // 이터러블(순회 가능, iterable) 프로토콜(규약, protocol)
 // - iterable[Symbol.iterator] 메서드를 가진 객체
+// - String, Array
 //
 // 이터레이터(반복자, iterator) 프로토콜
 // - next 메서드를 가진 객체
@@ -18,14 +19,15 @@
 let iterable = '당신의 재능 기부가 큰 힘이 됩니다.';
 
 // 이터러블 프로토콜은 [Symbol.iterator] 메서드를 가짐
-// console.log(typeof iterable[Symbol.iterator]);
+console.log(typeof iterable[Symbol.iterator]);
+// console.log(typeof iterable[Symbol.iterator]());
 
 // 🔶 이터레이터 프로토콜
 // 참고: https://mzl.la/49DSy4q
 
 // 순회 가능한 프로토콜의 [Symbol.iterator] 메서드를 실행하면
 // 반복자(Iterator) 반환
-const iterator = iterable[Symbol.iterator]();
+// const iterator = iterable[Symbol.iterator]();
 // console.log(iterator);
 
 // 이터레이터 프로토콜은 next 메서드를 가짐
@@ -34,10 +36,14 @@ const iterator = iterable[Symbol.iterator]();
 // 반복자의 next 메서드가 실행되면 { done, value } 반환
 // done 값이 true인 경우, 순환 종료
 for (let i = 0, l = iterable.length; i <= l; i += 1) {
-  const nextValue = iterator.next();
+  const iterator = iterable[Symbol.iterator]();
+  const nextValue = iterator.next(); // { done, value }
   // console.log(nextValue);
   // console.log(nextValue.value);
 }
+
+// while, do ~ while, for, for ~ in
+// for ~ of
 
 // --------------------------------------------------------------------------
 // for ~ of 문
@@ -46,8 +52,12 @@ for (let i = 0, l = iterable.length; i <= l; i += 1) {
 // - 🔶 실습을 진행합니다.
 
 let designIs = 'design is all. all is design.';
-let designIsIterator;
+// let designIsIterator = designIs[Symbol.iterator]() ;
 // console.log(designIsIterator)
+
+for (const character of designIs) {
+  console.log(character);
+}
 
 // --------------------------------------------------------------------------
 // 이터러블과 전개 연산자
@@ -55,37 +65,40 @@ let designIsIterator;
 // - 배열 내부에 이터러블 프로토콜을 전개하면 이터레이터 객체의 값을 나열할 수 있습니다.
 // - 🔶 실습을 진행합니다.
 
-const iterableInsideArray = [];
-// console.log(iterableInsideArray);
+const iterableInsideArray = [...designIs];
+console.log(iterableInsideArray);
 
 // --------------------------------------------------------------------------
 // 내장된 이터러블 프로토콜
 //
 // - String
 // - Array
-// - Set
-// - Map
+// - Set (2015): like Array
+// - Map (2015): like Object
 
 // Array
 const coffee = ['에스프레소', '아메리카노', '라떼', '카푸치노'];
-// console.log(typeof coffee[Symbol.iterator]);
+console.log(typeof coffee[Symbol.iterator]);
 
 // Set
-const coffeeTypes = new Set([
+const combinedCoffees = [
   ...coffee.slice(0, 3),
   ...['로부스타', '리베리카', '아라비카'],
   ...coffee.slice(2),
   ...['아라비카', '바닐라 라떼'],
-]);
+];
 
-// console.log(coffeeTypes);
-// console.log(typeof coffeeTypes[Symbol.iterator]);
-// console.log(Array.isArray([...coffeeTypes]));
+console.log(combinedCoffees);
+const coffeeTypes = new Set(combinedCoffees);
+console.log(coffeeTypes);
+
+console.log(typeof coffeeTypes[Symbol.iterator]);
+console.log(Array.isArray([...coffeeTypes]));
 
 // Map
 let primaryColor = '#fa5252';
 
-const cssEntries = Object.entries({
+const cssObject = {
   display: 'flex',
   flexFlow: 'row nowrap',
   gap: '20px',
@@ -95,14 +108,45 @@ const cssEntries = Object.entries({
   color: `${primaryColor}`,
   background: 'transparent',
   fontSize: '14px',
-});
-// console.log(cssEntries);
+};
+
+console.log(cssObject);
+
+const cssEntries = Object.entries(cssObject);
+console.log(cssEntries); //[[key, value], [key, value]]
 
 const cssMap = new Map(cssEntries);
-// console.log(cssMap);
+console.log(cssMap);
 
 // for ~ of 문을 사용해 이터러블인 cssMap을 순환하여 key, value를 출력해봅니다.
 // 🔶 실습을 진행합니다.
+for (const [key, value] of cssMap) {
+  // const [key, value] = keyValue;
+  // const keyValue = { key: key, value: value };
+  // const keyValue = { key, value };
+  // console.log({ key: key, value: value });
+  console.log({ key, value });
+
+  // console.log(key);
+  // console.log(value);
+}
+
+// for (const key in cssObject) {
+//   console.log(key);
+//   console.log(cssObject[key]);
+// }
+
+for (const key in cssObject) {
+  if (Object.hasOwnProperty.call(cssObject, key)) {
+    const value = cssObject[key];
+    console.log(key);
+    console.log(value);
+  }
+}
+
+for (const [key, value] of Object.entries(cssObject)) {
+  console.log({ key, value });
+}
 
 // --------------------------------------------------------------------------
 // 커스텀 이터러블
