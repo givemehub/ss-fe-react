@@ -38,5 +38,5 @@ function* fibonacciGenerator(n) {
   }
 }
 
-// const fibo14Array = fibonacciGenerator(14);
-// console.log(fibo14Array);
+const fibo14Array = fibonacciGenerator(14);
+console.log([...fibo14Array]);

@@ -156,10 +156,10 @@ for (const [key, value] of Object.entries(cssObject)) {
 // - next 메서드가 실행되면 { done, value } 객체 반환
 
 const customIterable = {
-  _i: 0,
-  _distance: 1,
-  _max: 100,
-  [Symbol.iterator]() {
+  _i: 0, // private
+  _distance: 1, // private
+  _max: 100, // private
+  [Symbol.iterator]: function () {
     let { _i: i, _distance: distance, _max: max } = this;
 
     return {
@@ -178,6 +178,10 @@ const customIterable = {
 
 // customIterable 이터러블의 값을 나열한 배열을 작성한 후 Console에 출력합니다.
 // 🔶 실습을 진행합니다.
+console.log([...customIterable]);
 
 // for ~ of 문을 사용해 customIterable 이터러블을 순환해 값을 Console에 출력합니다.
 // 🔶 실습을 진행합니다.
+for (const value of customIterable) {
+  console.log(value);
+}
