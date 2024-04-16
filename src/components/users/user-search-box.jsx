@@ -1,7 +1,10 @@
 import classes from './user-search-box.module.css';
-import { useId, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 
-export function UserSearchBox({ onChange }) {
+export const UserSearchBox = forwardRef(function UserSearchBox(
+  { onChange },
+  ref
+) {
   const id = useId();
   const [search, setSearch] = useState('');
 
@@ -25,6 +28,7 @@ export function UserSearchBox({ onChange }) {
         사용자 검색
       </label>
       <input
+        ref={ref}
         type="search"
         placeholder="사용자 이름 입력"
         id={id}
@@ -34,4 +38,4 @@ export function UserSearchBox({ onChange }) {
       />
     </div>
   );
-}
+});
