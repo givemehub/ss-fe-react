@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { jsx } from 'react/jsx-runtime';
-import { Description, Headline, Link } from './components';
+// import { jsx } from 'react/jsx-runtime';
+import { Description, Headline, IconReact, Link } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -47,7 +47,14 @@ class App extends Component {
         {/* <Link className={className} href={href} rel={rel} target={target}>
           {linkText}
         </Link> */}
-        <Link {...restLinkProps}>{linkText}</Link>
+        <Link
+          {...restLinkProps}
+          // 이름이 부여된 슬롯 (named slot: named prop)
+          icon={<IconReact />}
+        >
+          {/* 기본 슬롯 (default slot: props.children) */}
+          {linkText}
+        </Link>
       </main>
     );
   }

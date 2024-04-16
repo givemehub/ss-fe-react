@@ -142,12 +142,16 @@ body {
   }
 
   .button {
+    display: inline-flex;
+    column-gap: 4px;
+    align-items: center;
     --background-color: rgba(var(--primary-rgb), 0.075);
     background: var(--background-color);
     color: rgba(var(--primary-rgb), 1);
     border: 1px solid var(--background-color);
     border-radius: var(--rounded);
-    padding: var(--inner-space);
+    /* padding: var(--inner-space); */
+    padding: 8px 16px 8px 14px;
     font-size: var(--font-sm);
 
     &:hover:not(:disabled) {

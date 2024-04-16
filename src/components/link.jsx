@@ -1,4 +1,4 @@
-export function Link({ className, href, rel, target, children }) {
+export function Link({ icon, className, href, rel, target, children }) {
   return (
     <a
       // 속성 바인딩
@@ -7,9 +7,9 @@ export function Link({ className, href, rel, target, children }) {
       target={target}
       rel={rel}
     >
-      {/* 데이터 바인딩(연결) */}
-      {/* 기본 슬롯 (default slot) */}
+      {icon}
       {children}
+      {/* {icon} */}
     </a>
   );
 }
