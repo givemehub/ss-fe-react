@@ -1,5 +1,5 @@
 import { it, expect, describe } from 'vitest';
-import removeSpaceHTMLString from '../src/utils/removeSpaceHTMLString';
+import removeSpaceHTMLString from '../../src/utils/removeSpaceHTMLString';
 
 describe('removeSpaceHTMLString 테스트', () => {
   const htmlString = /* html */ `

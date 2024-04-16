@@ -14,8 +14,11 @@ export default defineConfig(({ mode }) => {
       cors: true,
       open: true,
     },
+    // Vitest 구성(config)
     test: {
       globals: true,
+      environment: 'jsdom',
+      setupFiles: ['./tests/setup.js'],
     },
   };
 });

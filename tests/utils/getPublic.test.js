@@ -1,5 +1,5 @@
 import { expect, it, describe } from 'vitest';
-import { getPublic } from '../src/utils/getPublic';
+import { getPublic } from '../../src/utils/getPublic';
 
 describe('getPublic 테스트', () => {
   it('getPublic 함수 반환 값 타입은 "string"', () => {
