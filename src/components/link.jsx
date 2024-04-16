@@ -1,5 +1,4 @@
 export function Link(props) {
-  // return createElement('a', props);
   return (
     <a
       href={props.href}

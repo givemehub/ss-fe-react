@@ -33,15 +33,6 @@ class App extends Component {
         </Link>
       </main>
     );
-
-    // return createElement(
-    //   'main',
-    //   { className: 'learn' },
-    //   // createElement(type, props, ...children)
-    //   createElement(Headline, {}, headline),
-    //   createElement(Description, {}, description),
-    //   createElement(Link, restLinkProps, linkText)
-    // );
   }
 }
 

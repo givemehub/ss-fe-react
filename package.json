@@ -8,7 +8,7 @@
     "dev": "vite serve",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext js --ignore-path .gitignore",
+    "lint": "eslint . --ext js,jsx --ignore-path .gitignore",
     "test": "vitest -r tests",
     "test:ui": "vitest --ui --exclude _"
   },
@@ -21,6 +21,7 @@
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/ui": "1.5.0",
     "eslint": "8.57.0",
+    "eslint-plugin-react": "7.34.1",
     "vitest": "1.5.0"
   }
 }

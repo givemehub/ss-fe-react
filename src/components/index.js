@@ -1,3 +1,3 @@
-export * from './headline.jsx';
-export * from './description.jsx';
-export * from './link.jsx';
+export * from './headline';
+export * from './description';
+export * from './link';

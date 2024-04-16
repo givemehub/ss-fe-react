@@ -1,7 +1,3 @@
-export function Headline(props /* { children } */) {
-  // JSX
+export function Headline(props) {
   return <h1>{props.children}</h1>;
-
-  // Browser
-  // return React.createElement('h1', props);
 }
