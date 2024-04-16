@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Headline, Description, Link } from './components';
 
 class App extends Component {
