@@ -10,6 +10,11 @@ module.exports = {
     'plugin:react/jsx-runtime',
   ],
   overrides: [],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   plugins: ['react'],
   parserOptions: {
     ecmaVersion: 'latest',
