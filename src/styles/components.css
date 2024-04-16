@@ -1,0 +1,127 @@
+.app {
+  margin: 20px;
+}
+
+.widget {
+  --width: 192px;
+  --height: 72px;
+  --radius: 6px;
+  --border-color: #EBEBEA;
+  --gradient-start: #FFF;
+  --gradient-end: #F4F4F4;
+  --sahdow: #b5b5b526;
+
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  inline-size: var(--width);
+  min-inline-size: var(--width);
+  block-size: 72px;
+  border: 1px solid var(--border-color);
+  padding: 16px 8px 16px 16px;
+  border-radius: var(--radius);
+  background: var(--gradient-300, linear-gradient(99deg, var(--gradient-start) 29.16%, var(--gradient-end) 93.35%));
+  box-shadow: 0px 4px 4px 0px var(--shadow);
+  font-family: Pretendard;
+
+
+  &.widget__weather {
+
+    >img {
+      order: 1;
+    }
+
+    .weather__info {
+      display: flex;
+      flex-flow: column;
+      gap: 4px;
+
+      .weather__info--template {
+        font-weight: 900;
+        font-size: 20px;
+        color: var(--gray-950, #040404);
+        line-height: 1;
+        letter-spacing: 0.2px;
+      }
+
+      .weather__info--description {
+        color: var(--gray-500, #6D7478);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.12px;
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.learn {
+  --base: 10px;
+
+  padding: calc(var(--spacing) * 5);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-block-start: 0;
+    margin-block-end: calc(var(--spacing) * 2);
+    color: rgba(var(--primary-rgba));
+  }
+
+  h1 {
+    font-size: calc(var(--base) * 3.2);
+  }
+
+  h2 {
+    font-size: calc(var(--base) * 2.8);
+  }
+
+  h3 {
+    font-size: calc(var(--base) * 2.2);
+  }
+
+  h4 {
+    font-size: calc(var(--base) * 2);
+  }
+
+  h5 {
+    font-size: calc(var(--base) * 1.8);
+  }
+
+  h6 {
+    font-size: calc(var(--base) * 1.4);
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline-offset: 3px;
+    outline: 3px solid rgba(var(--primary-rgb), 0.35);
+    border-radius: 1px;
+  }
+}
+
+.button {
+  --background-color: rgba(var(--primary-rgb), 0.075);
+  background: var(--background-color);
+  color: rgba(var(--primary-rgb), 1);
+  border: 1px solid var(--background-color);
+  border-radius: var(--rounded);
+  padding: var(--inner-space);
+  font-size: var(--font-sm);
+
+  &:hover:not(:disabled) {
+    --background-color: rgba(var(--primary-rgb), 0.12);
+  }
+
+  &.outline {
+    background: transparent;
+    border: 1px solid rgba(var(--primary-rgb), 0.8);
+  }
+}
