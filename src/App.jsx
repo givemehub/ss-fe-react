@@ -1,6 +1,6 @@
 import { Component } from 'react';
 // import { jsx } from 'react/jsx-runtime';
-import { Description, Headline, IconReact, Link } from './components';
+import { Description, Headline, IconReact, Link, Button } from './components';
 
 class App extends Component {
   constructor(props) {
@@ -32,8 +32,19 @@ class App extends Component {
     const { text: linkText, ...restLinkProps } = link;
     // const { className, href, target, rel } = restLinkProps;
 
+    const mainStyles = {
+      backgroundColor: 'blue',
+      color: ' white',
+      margin: 40,
+      border: '4px solid currentColor',
+      padding: 40,
+    };
+
+    console.log(mainStyles);
+
     return (
-      <main className={mainClassName}>
+      <main style={mainStyles} className={mainClassName}>
+        {/* JSX 구문 내에서 사용하는 주석 */}
         {/* 슬롯(slot) = props.children */}
         <Headline>{headline}</Headline>
         {/* 기본 슬롯(default slot) = props.children */}
@@ -52,9 +63,14 @@ class App extends Component {
           // 이름이 부여된 슬롯 (named slot: named prop)
           icon={<IconReact />}
         >
+          {' '}
           {/* 기본 슬롯 (default slot: props.children) */}
           {linkText}
         </Link>
+        <div>
+          <Button />
+          <Button></Button>
+        </div>
       </main>
     );
   }
