@@ -1,12 +1,31 @@
 import classes from './user-search-box.module.css';
-import { forwardRef, useId, useState } from 'react';
+import {
+  forwardRef,
+  useId,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 export const UserSearchBox = forwardRef(function UserSearchBox(
   { onChange },
   ref
 ) {
   const id = useId();
+  const inputRef = useRef(null);
   const [search, setSearch] = useState('');
+
+  useImperativeHandle(ref, () => {
+    const input = inputRef.current;
+    return {
+      highlight({ color = '#1ed799', timeout = 900 } = {}) {
+        input.style.borderColor = color;
+        setTimeout(() => {
+          input.style.removeProperty('border-color');
+        }, timeout);
+      },
+    };
+  });
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -28,7 +47,7 @@ export const UserSearchBox = forwardRef(function UserSearchBox(
         사용자 검색
       </label>
       <input
-        ref={ref}
+        ref={inputRef}
         type="search"
         placeholder="사용자 이름 입력"
         id={id}
