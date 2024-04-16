@@ -1,5 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
+import { createElement } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from '../App';
 
 // ------------------------------------------------------------
 // React Element
@@ -46,65 +47,4 @@ import * as ReactDOM from 'react-dom/client';
 //   });
 // }
 
-const IconWeather = (props /* { type } */) =>
-  React.createElement('img', {
-    src: `/icons/weather-${props.type}.svg`,
-    alt: '맑고 구름 조금',
-    title: '맑고 구름 조금',
-  });
-
-class WeatherWidget extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    return React.createElement('article', {
-      className: 'widget widget__weather',
-      children: [
-        React.createElement('h2', { className: 'sr-only' }, '날씨'),
-        React.createElement(IconWeather),
-        React.createElement('div', {
-          className: 'weather__info',
-          role: 'group',
-          children: [
-            React.createElement(
-              'span',
-              { className: 'weater__info--template' },
-              '-0.9°'
-            ),
-            React.createElement(
-              'span',
-              { className: 'weather__info--description' },
-              '어제보다 10.3° 낮아요'
-            ),
-          ],
-        }),
-      ],
-    });
-  }
-}
-
-class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
-  render() {
-    return React.createElement(
-      'div',
-      { className: 'app' },
-      React.createElement(WeatherWidget),
-      React.createElement('h1', {}, '리액트 컴포넌트'),
-      React.createElement(IconWeather, { type: 'fine-dust' }),
-      React.createElement(IconWeather, { type: 'lightning' }),
-      React.createElement(IconWeather, { type: 'partly-cloudy' }),
-      React.createElement(IconWeather, { type: 'rainy' }),
-      React.createElement(IconWeather, { type: 'sunny' })
-    );
-  }
-}
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  React.createElement(App)
-);
+createRoot(document.getElementById('root')).render(createElement(App));
