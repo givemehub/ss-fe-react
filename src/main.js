@@ -60,7 +60,12 @@ console.log(main);
 // 웹 표준 DOM API
 const rootElement = document.getElementById('root');
 
-// ReactDOM Root 생성
-const reactDOMRoot = createRoot(rootElement);
+// 타입 가드
+if (rootElement && rootElement.nodeType === document.ELEMENT_NODE) {
+  // ReactDOM Root 생성
+  const reactDOMRoot = createRoot(rootElement);
 
-reactDOMRoot.render(main);
+  reactDOMRoot.render(main);
+} else {
+  alert('"root" 이름의 DOM 요소가 문서에 존재하지 않습니다.');
+}
