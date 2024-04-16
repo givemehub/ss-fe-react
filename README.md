@@ -7,13 +7,13 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#14-sync-with-effects <폴더_이름>
+npx degit yamoo9/ss-fe-react#17-use-imperative-handle <폴더_이름>
 ```
 
-## 참조(Ref) 활용
+## DOM 요소 대신, 명령형 핸들만 노출
 
-리액트의 렌더링 프로세스와 무관하게 렌더링에 영향을 주지 않으면서 특정 정보를 기억해야 하거나,
-리액트에 의해 관리되는 DOM 엘리먼트 접근/조작이 필요한 경우 참조(ref)를 활용할 수 있습니다.
+참조(ref) 전달은 하위 컴포넌트 내부의 DOM 요소를 고스란히 노출합니다.
+필요에 따라 DOM 요소를 노출하는 대신, DOM 요소를 제어하는 핸들만 노출할 수도 있습니다.
+이렇게 하면 DOM 요소에 대한 노출을 최소한으로 제한할 수 있습니다.
 
-- 상태를 사용하지 않고, 리-렌더링 되더라도 값을 기억하려면? [React.useRef](https://react.dev/reference/react/useRef) 훅을 사용합니다.
-- 리액트에서 관리되는 DOM 엘리먼트에 접근해 조작할 경우에도 React.useRef 훅을 사용합니다.
+이런 경우, [React.useImperativeHandle](https://react.dev/reference/react/useImperativeHandle) 훅을 사용합니다.
