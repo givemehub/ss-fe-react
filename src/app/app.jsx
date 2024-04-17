@@ -1,25 +1,26 @@
 import { Component } from 'react';
-import { Description, Headline, Link } from './components';
-import { getPublic } from './utils';
+import { Description, Headline, Link } from '../components';
+import { getPublic } from '../utils';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+  // 클래스 필드 구문 지원
+  // constructor(props) {
+  //   super(props);
+  // }
 
-    // 데이터 분리
-    this.state = {
-      headline: '리액트 러닝 가이드',
-      description:
-        '리액트 라이브러리를 사용해 사용자 인터페이스를 구축하는 방법을 학습합니다.',
-      link: {
-        className: 'button',
-        href: 'https://react.dev',
-        target: '_blank',
-        rel: 'noopener noreferrer',
-        text: 'react.dev',
-      },
-    };
-  }
+  // 데이터 분리
+  state = {
+    headline: '리액트 러닝 가이드',
+    description:
+      '리액트 라이브러리를 사용해 사용자 인터페이스를 구축하는 방법을 학습합니다.',
+    link: {
+      className: 'button',
+      href: 'https://react.dev',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      text: 'react.dev',
+    },
+  };
 
   render() {
     const { headline, description, link } = this.state;
@@ -31,7 +32,7 @@ class App extends Component {
     };
 
     return (
-      <main className="learn">
+      <main data-testid="app" className="learn">
         {/* JSX 주석 */}
         {/* 기본 슬롯 */}
         <Headline>{headline}</Headline>
