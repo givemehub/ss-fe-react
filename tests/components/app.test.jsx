@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { it, expect, describe } from 'vitest';
-import App from '@/app';
+import App from '@/app/app';
 
 describe('App 컴포넌트', () => {
   it('렌더링', () => {
