@@ -6,12 +6,12 @@ describe('Description 컴포넌트', () => {
   it('props.children 렌더링', () => {
     render(<Description>컴포넌트 렌더 테스트</Description>);
 
-    screen.debug();
+    // screen.debug();
 
-    const heading = screen.getByRole('paragraph');
+    const description = screen.getByRole('paragraph');
 
-    expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent(/렌더/i);
+    expect(description).toBeInTheDocument();
+    expect(description).toHaveTextContent(/렌더/i);
   });
 
   it('props.message 렌더링', () => {
@@ -21,11 +21,19 @@ describe('Description 컴포넌트', () => {
       </Description>
     );
 
-    screen.debug();
+    // screen.debug();
 
-    const heading = screen.getByRole('paragraph');
+    const description = screen.getByRole('paragraph');
 
-    expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent(/메시지 콘텐츠/i);
+    expect(description).toBeInTheDocument();
+    expect(description).toHaveTextContent(/메시지 콘텐츠/i);
+  });
+
+  it('외부 속성 확장 렌더링', () => {
+    render(<Description lang="es">¡Reaccionar es increíble!</Description>);
+    // screen.debug();
+
+    const description = screen.getByRole('paragraph');
+    expect(description).toHaveAttribute('lang', 'es');
   });
 });
