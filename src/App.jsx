@@ -1,6 +1,6 @@
-import { Description, Headline, Link, ProductImageGallery } from '@/components';
+import { Component, Fragment } from 'react';
+import { Description, Headline, Link } from '@/components';
 import { getPublic } from '@/utils';
-import { Component } from 'react';
 
 class App extends Component {
   state = {
@@ -35,7 +35,7 @@ class App extends Component {
       '리액트 라이브러리를 사용해 사용자 인터페이스를 구축하는 방법을 학습합니다.',
     link: {
       className: 'button',
-      href: 'https://react.dev',
+      href: 'https://dev',
       target: '_blank',
       rel: 'noopener noreferrer',
       text: 'react.dev',
@@ -52,9 +52,14 @@ class App extends Component {
     };
 
     return (
-      <main className="learn" data-testid="app">
+      <>
         <Headline>{headline}</Headline>
-        <Description message={description}></Description>
+        {products.map(({ title, price, id }) => (
+          <Fragment key={id}>
+            <Description message={title} />
+            <Description message={price} />
+          </Fragment>
+        ))}
         <Link
           className={link.className}
           href={link.href}
@@ -71,11 +76,7 @@ class App extends Component {
           />{' '}
           {link.text}
         </Link>
-
-        <ProductImageGallery data={[]} />
-        <hr />
-        <ProductImageGallery data={products} />
-      </main>
+      </>
     );
   }
 }
