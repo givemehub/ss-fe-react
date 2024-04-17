@@ -29,7 +29,7 @@ class App extends Component {
       <main className="learn" data-testid="app">
         <Headline>{headline}</Headline>
         <Description type="ANGRY" message={description}></Description>
-        <Description type="embarrassed" lang="es">
+        <Description hide={false} type="embarrassed" lang="es">
           ¡Reaccionar es increíble!
         </Description>
         <Link

@@ -74,4 +74,26 @@ const IMOJI_TYPE = {
 //   );
 // }
 
+const printImoji = {
+  pin: () => '📌',
+  gear: () => '⚙️',
+  broccoli: () => '🥦',
+};
+
 // 옵셔널 체이닝(?.) 활용
+export function Description({ type, message, children, hide, ...restProps }) {
+  const imoji = IMOJI_TYPE[type] ?? '🤔';
+  let printMessage = `${imoji} ${message ? message : children}`.trim();
+
+  // if (printImoji && typeof printImoji.broccoli === 'function') {
+  printMessage += ' ' + (printImoji.apple?.() ?? '');
+  // }
+
+  const isHidden = { display: !hide ? 'block' : 'none' };
+
+  return (
+    <p style={isHidden} {...restProps}>
+      {printMessage}
+    </p>
+  );
+}
