@@ -1,10 +1,10 @@
-import { UsersPage } from '@/pages/users/users';
+import { NoteApp } from '@/pages/notes/notes';
 import './app.css';
 
 function App() {
   return (
     <div className="App">
-      <UsersPage />
+      <NoteApp />
     </div>
   );
 }

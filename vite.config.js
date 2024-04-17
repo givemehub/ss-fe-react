@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: BASE_URL ?? '/',
+    css: {
+      devSourcemap: true,
+    },
     plugins: [react()],
     resolve: {
       alias: {

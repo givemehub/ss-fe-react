@@ -1,3 +1,8 @@
-@import url('./base.css') layer(base);
-@import url('./components.css') layer(components);
-@import url('./utillities.css') layer(utilities);
+@import 'tailwindcss/base';
+@import './base.css';
+
+@import 'tailwindcss/components';
+@import './components.css';
+
+@import 'tailwindcss/utilities';
+@import './utillities.css';
