@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <main className="learn" data-testid="app">
         <Headline>{headline}</Headline>
-        <Description type="angry" message={description}></Description>
+        <Description type="ANGRY" message={description}></Description>
         <Description type="embarrassed" lang="es">
           ¡Reaccionar es increíble!
         </Description>

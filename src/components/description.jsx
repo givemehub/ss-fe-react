@@ -55,11 +55,23 @@ const IMOJI_TYPE = {
 // }
 
 // 터너리(ternary, 삼항 연산자 식 조건 ? 참인 값 : 거짓인 값) 활용
-export function Description({ type, message, children, ...restProps }) {
-  const imoji = IMOJI_TYPE[type]; // IMOJI_TYPE['angry']
-  return (
-    <p {...restProps}>
-      {imoji} {message ? message : children}
-    </p>
-  );
-}
+// export function Description({ type, message, children, ...restProps }) {
+//   const imoji = IMOJI_TYPE[type];
+//   return (
+//     <p {...restProps}>
+//       {imoji} {message ? message : children}
+//     </p>
+//   );
+// }
+
+// null 병합 연산자(??) 활용
+// export function Description({ type, message, children, ...restProps }) {
+//   const imoji = IMOJI_TYPE[type] ?? '🤔';
+//   return (
+//     <p {...restProps}>
+//       {imoji} {message ? message : children}
+//     </p>
+//   );
+// }
+
+// 옵셔널 체이닝(?.) 활용
