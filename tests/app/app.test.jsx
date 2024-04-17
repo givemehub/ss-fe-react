@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { expect, it } from 'vitest';
-import App from '../../src/app/app';
+import App from '@/app/app';
 
 it('App 컴포넌트 렌더링', () => {
   const { container } = render(<App />);

@@ -1,6 +1,6 @@
 import { it, expect, describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Headline } from '../../src/components/headline';
+import { Headline } from '@/components';
 
 describe('Headline 컴포넌트', () => {
   it('초기 렌더링 (props.children 표시)', () => {

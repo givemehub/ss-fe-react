@@ -1,6 +1,6 @@
 import { it, expect, describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Link } from '../../src/components';
+import { Link } from '@/components';
 
 describe('Link 컴포넌트', () => {
   it('<a href> 링크 요소 렌더링', () => {

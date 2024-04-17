@@ -1,6 +1,6 @@
 import { it, expect, describe } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { Description } from '../../src/components/description';
+import { Description } from '@/components';
 
 describe('Description 컴포넌트', () => {
   it('기본 슬롯 렌더링', () => {
