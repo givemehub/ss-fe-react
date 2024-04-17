@@ -10,23 +10,15 @@
 npx degit yamoo9/ss-fe-react#18-custom-hook <폴더_이름>
 ```
 
-## 상태 로직을 리듀서로 관리하기
+## 클라이언트 사이드 라우팅
 
-컴포넌트 내부에 상태를 업데이트하는 다수의 이벤트 핸들러가 포함된 경우, 컴포넌트 관리가 쉽지 않습니다. 
-이런 경우 상태를 업데이트하는 모든 로직을 [useReducer](https://ko.react.dev/reference/react/useReducer) 훅을 사용해 컴포넌트 외부에서 리듀서(reducer) 함수로 통합해 관리할 수 있습니다.
+[React Router](https://reactrouter.com) 라이브러리를 사용해 클라이언트 측 라우팅을 구성합니다.
 
-## 노트 앱 구현 
+## 컨텍스트를 통해 데이터 공유
 
-간단한 노트 앱을 구현해봅니다.
+리액트는 기본적으로 상위 컴포넌트에서 하위 컴포넌트로 props를 전달해 데이터를 공유합니다. 
+하지만 중간 계층에 여러 컴포넌트를 거쳐야 하거나, 여러 컴포넌트에서 동일한 데이터를 공유해야 할 경우 
+props를 건너 건너 전달해야 하므로 매우 번거롭고 불편할 수 있습니다. 
 
-```sh
-src/pages/notes/
-├── components/
-│   ├── note-edit.jsx
-│   ├── note-form.jsx
-│   ├── note-item.jsx
-│   └── note-list.jsx
-├── data/
-│   └── notes.json
-└── notes.jsx
-```
+이런 경우 컨텍스트(Context)를 사용하면 명시적으로 props를 전달해주지 않아도 
+상위 컴포넌트가 트리에 있는 어떤 하위 컴포넌트에서나 데이터를 손쉽게 사용할 수 있습니다.
