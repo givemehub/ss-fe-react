@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { Description, Headline, Link } from './components';
-import { getPublic } from './utils';
+import { Button, Description, Headline, Link } from '@/components';
+import { getPublic } from '@/utils';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +33,10 @@ class App extends Component {
       <main className="learn" data-testid="app">
         <Headline>{headline}</Headline>
         <Description message={description}></Description>
+        <div style={{ marginBlockEnd: 40 }}>
+          <Button>저장</Button>
+          <Button>공유</Button>
+        </div>
         <Link
           className={link.className}
           href={link.href}
