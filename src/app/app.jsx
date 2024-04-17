@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Description, Headline, Link } from '@/components';
-import { getPublic } from '@/utils';
+import { getPublic } from '@/components';
 
 class App extends Component {
   // 클래스 필드 구문 지원
