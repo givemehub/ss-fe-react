@@ -1,10 +1,15 @@
+/* eslint-disable no-unused-vars */
+
 export function Button({ type = 'button', disabled = false, children }) {
-  const handleClick = (event) => {
-    console.log(`clicked ${children} ${event.currentTarget.localName}`);
+  const handleClick = (e) => {
+    console.log('span => button', e.target === e.currentTarget);
+    console.log(`clicked ${children} ${e.currentTarget.localName}`);
   };
 
   const handleClickSpan = (e) => {
-    console.log(e.target.localName);
+    console.log('only span', e.target === e.currentTarget);
+    // console.log(e.target.localName);
+    // console.log(e.currentTarget.localName);
     e.stopPropagation();
   };
 
