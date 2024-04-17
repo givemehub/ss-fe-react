@@ -1,64 +1,28 @@
-import { UserList, UserListCount, UserSearchBox } from '@/components';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import classes from './users.module.css';
+import useUsers from '@/hooks/useUsers';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
+import { UserList, UserListCount, UserSearchBox } from '@/components';
 
 export function UsersPage() {
   const changeCountRef = useRef(0);
   const searchBoxHandleRef = useRef(null);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    setIsLoading(true);
-    setError(null);
+  useDocumentTitle('사용자 목록 & 검색');
 
-    const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
-    const controller = new AbortController();
-
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(ENDPOINT, { signal: controller.signal });
-        const data = await response.json();
-
-        setUsers(data);
-        setIsLoading(false);
-      } catch (error) {
-        if (!/abort/i.test(error.name)) {
-          setError(error);
-          setIsLoading(false);
-        }
-      }
-    };
-
-    fetchUsers();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
-
-  const [searchedUsers, setSearchedUsers] = useState(users);
-  useEffect(() => {
-    setSearchedUsers(users);
-  }, [users]);
+  const { isLoading, error, users, searchedUsers, refetch, onChange } =
+    useUsers();
 
   const handleChange = (search) => {
-    setSearchedUsers(
-      search !== 'reset'
-        ? users.filter((user) =>
-            user.name.toLowerCase().includes(search.toLowerCase())
-          )
-        : users
-    );
+    onChange(search, () => {
+      changeCountRef.current += 1;
 
-    changeCountRef.current += 1;
-
-    const searchBoxHandle = searchBoxHandleRef.current;
-    searchBoxHandle.highlight(/* {
-      color: '#d02578',
-      timeout: 1500,
-    } */);
+      const searchBoxHandle = searchBoxHandleRef.current;
+      searchBoxHandle.highlight(/* {
+        color: '#d02578',
+        timeout: 1500,
+      } */);
+    });
   };
 
   const userList = isLoading ? (
@@ -70,14 +34,17 @@ export function UsersPage() {
       {error.message}
     </div>
   ) : (
-    <UserList users={searchedUsers} />
+    searchedUsers && <UserList users={searchedUsers} />
   );
 
   return (
     <div className={classes.component}>
+      <button className="button" type="button" onClick={() => refetch()}>
+        refetch
+      </button>
       <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
       {userList}
-      <UserListCount count={searchedUsers.length} total={users.length} />
+      <UserListCount count={searchedUsers?.length} total={users?.length} />
     </div>
   );
 }
