@@ -1,21 +1,27 @@
+import { useState } from 'react';
+
 export function TermsAndConditions() {
+  // 리액트에 의해 제어되는 컴포넌트(controlled component)
+  const [terms, setTerms] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('폼 제출');
+    // console.log('폼 제출');
 
-    const formData = new FormData(e.currentTarget);
-    const terms = formData.get('terms');
-    console.log({ terms });
+    const requestData = {
+      terms,
+    };
+
+    console.log(requestData);
+
+    // const formData = new FormData(e.currentTarget);
+    // const terms = formData.get('terms');
+    // console.log({ terms });
   };
 
   const handleChange = (e) => {
-    console.log('입력이 변경됨');
-    console.log(e.target.checked);
-  };
-
-  const handleClick = (e) => {
-    console.log('버튼이 클릭됨');
-    console.log(e.target.textContent);
+    // console.log('입력이 변경됨');
+    setTerms(e.target.checked);
   };
 
   return (
@@ -30,14 +36,14 @@ export function TermsAndConditions() {
         <input
           type="checkbox"
           id="terms"
-          name="terms"
+          // name="terms"
+          checked={terms}
+          // readOnly
           onChange={handleChange}
         />
         <label htmlFor="terms">이용 약관에 동의합니다.</label>
       </div>
-      <button type="submit" onClick={handleClick}>
-        확인
-      </button>
+      <button type="submit">확인</button>
     </form>
   );
 }
