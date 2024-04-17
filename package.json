@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --ignore-path .gitignore",
     "test": "vitest -r tests",
-    "test:ui": "vitest --ui --exclude _"
+    "test:ui": "vitest --ui --exclude _",
+    "pocketbase": "./pocketbase/pocketbase serve"
   },
   "dependencies": {
     "autoprefixer": "10.4.19",
@@ -31,6 +32,7 @@
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "jsdom": "24.0.0",
+    "pocketbase": "0.21.1",
     "vitest": "1.5.0"
   }
 }

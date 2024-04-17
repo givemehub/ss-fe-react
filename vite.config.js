@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const { BASE_URL, DEV_SERVER_PORT } = env;
+  const { BASE_URL, DEV_SERVER_PORT, SERVER_API_URL } = env;
 
   return {
     base: BASE_URL ?? '/',
@@ -22,6 +22,12 @@ export default defineConfig(({ mode }) => {
       port: DEV_SERVER_PORT,
       cors: true,
       open: true,
+      proxy: {
+        '/api': {
+          target: SERVER_API_URL,
+          changeOrigin: true,
+        },
+      },
     },
     test: {
       globals: true,
