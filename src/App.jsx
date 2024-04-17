@@ -1,7 +1,6 @@
+import { Description, Headline, Link, ProductImageGallery } from '@/components';
+import { getPublic } from '@/utils';
 import { Component } from 'react';
-import { Description, Headline, Link } from './components';
-import { getPublic } from './utils';
-import { UserList } from './components/users/user-list';
 
 class App extends Component {
   state = {
@@ -13,6 +12,22 @@ class App extends Component {
       {
         id: crypto.randomUUID(),
         name: '리액트 라우터',
+      },
+    ],
+    products: [
+      {
+        id: crypto.randomUUID(),
+        title: '두부 5kg',
+        price: 9800,
+        image:
+          'https://images.pexels.com/photos/4518610/pexels-photo-4518610.jpeg?auto=compress&cs=tinysrgb&w=600',
+      },
+      {
+        id: crypto.randomUUID(),
+        title: '만두 3kg',
+        price: 26700,
+        image:
+          'https://images.pexels.com/photos/955137/pexels-photo-955137.jpeg?auto=compress&cs=tinysrgb&w=600',
       },
     ],
     headline: '리액트 러닝 가이드',
@@ -28,7 +43,7 @@ class App extends Component {
   };
 
   render() {
-    const { headline, description, link } = this.state;
+    const { headline, description, link, products } = this.state;
     const announceText = '리액트 공식 문서 (새 탭 열림)';
     const imageStyles = {
       blockSize: 12,
@@ -57,9 +72,9 @@ class App extends Component {
           {link.text}
         </Link>
 
-        <UserList users={[]} />
+        <ProductImageGallery data={[]} />
         <hr />
-        <UserList users={this.state.users} />
+        <ProductImageGallery data={products} />
       </main>
     );
   }
