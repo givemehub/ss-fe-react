@@ -7,12 +7,6 @@
 //   }
 // }
 
-const IMOJI_TYPE = {
-  greet: '😃',
-  angry: '😡',
-  embarrassed: '😖',
-};
-
 // switch문 조건부 렌더링
 // export function Description({ type, message, children, ...restProps }) {
 //   let imoji = null;
@@ -80,19 +74,31 @@ const printImoji = {
   broccoli: () => '🥦',
 };
 
+const IMOJI_TYPE = {
+  greet: { icon: '😃', emotion: '신남' },
+  angry: { icon: '😡', emotion: '화남' },
+  embarrassed: { icon: '😖', emotion: '난감' },
+};
+
 // 옵셔널 체이닝(?.) 활용
 export function Description({ type, message, children, hide, ...restProps }) {
-  const imoji = IMOJI_TYPE[type] ?? '🤔';
-  let printMessage = `${imoji} ${message ? message : children}`.trim();
+  const imoji = IMOJI_TYPE[type] ?? { icon: '🤔', emotion: '생각 중...' };
+  console.log(imoji);
+
+  let printMessage = `${message ? message : children}`.trim();
 
   // if (printImoji && typeof printImoji.broccoli === 'function') {
-  printMessage += ' ' + (printImoji.apple?.() ?? '');
+  printMessage += printImoji.apple?.() ?? '';
   // }
 
   const isHidden = { display: !hide ? 'block' : 'none' };
+  const { icon, emotion } = imoji;
 
   return (
     <p style={isHidden} {...restProps}>
+      <span title={emotion} aria-label={emotion}>
+        {icon}
+      </span>{' '}
       {printMessage}
     </p>
   );
