@@ -66,6 +66,9 @@ class _App extends Component {
 // 이전에 실행될 때 기억(memory, like snapshot)된 값과
 // 현재 실행될 때 값을 비교해서 변경 사항이 감지되면
 // 화면(실제 DOM)을 업데이트 한다.
+
+let temp = {};
+
 function App() {
   // FLUX => React, Redux
   // 불변(immutable) 데이터 관리
@@ -75,13 +78,6 @@ function App() {
   const [description] = useState(
     '리액트 라이브러리를 사용해 사용자 인터페이스를 구축하는 방법을 학습합니다.'
   );
-  const [link] = useState({
-    className: 'button',
-    href: 'https://react.dev',
-    target: '_blank',
-    rel: 'noopener noreferrer',
-    text: 'react.dev',
-  });
 
   let [number, setNumber] = useState(1000);
   const handleUpdateTheScreen = () => {
@@ -89,6 +85,7 @@ function App() {
     const nextNumber = number + 100;
     // 리액트 렌더 트리거(요청)
     setNumber(nextNumber);
+    console.log('REACT: [trigger]');
 
     // 명령형 프로그래밍 (DOM Script, jQuery)
     // mutation state ❌
@@ -98,11 +95,32 @@ function App() {
   };
 
   const announceText = '리액트 공식 문서 (새 탭 열림)';
-  const imageStyles = {
+
+  // LOCAL VARIABLE
+  // Component State (memo)
+  const [imageStyles] = useState({
     blockSize: 12,
     inlinleSize: 12,
     verticalAlign: -1,
-  };
+  });
+
+  console.log('temp vs. imageStyles 비교', Object.is(temp, imageStyles));
+  console.log({ temp });
+  console.log({ imageStyles });
+
+  temp = imageStyles;
+
+  // COMPONENT STATE (MEMOIZED)
+  const [link] = useState({
+    className: 'button',
+    href: 'https://react.dev',
+    target: '_blank',
+    rel: 'noopener noreferrer',
+    text: 'react.dev',
+  });
+
+  console.log('REACT: [render]');
+  console.log('화면(DOM): 변경된 부분만 [commit]');
 
   return (
     <main className="learn" data-testid="app">
