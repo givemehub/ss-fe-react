@@ -1,0 +1,10 @@
+.component {
+  --pos: 18px;
+  position: absolute;
+  top: var(--pos);
+  right: var(--pos);
+  z-index: 1000;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(var(--primary-rgb), 0.7);
+}

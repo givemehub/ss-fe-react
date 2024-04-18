@@ -1,0 +1,7 @@
+.component {
+  position: relative;
+  background-color: rgba(var(--primary-rgb), 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.25);
+  padding: 20px;
+}

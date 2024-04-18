@@ -1,0 +1,18 @@
+.component {
+  list-style-type: none;
+  padding-left: 8px;
+
+  display: flex;
+  flex-flow: column;
+  gap: 6px;
+
+  li {
+    padding: 8px;
+    border-radius: 6px;
+    outline: 1px solid rgba(var(--primary-rgb), 0.76);
+
+    &:hover {
+      background: rgba(var(--primary-rgb), 0.15);
+    }
+  }
+}
