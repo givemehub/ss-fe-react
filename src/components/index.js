@@ -5,6 +5,8 @@ export * from './link';
 export * from './product-image-gallery';
 export * from './status-message';
 export * from './terms-and-conditions';
+export * from './error-message';
+export * from './spinner';
 
 export * from './users/user-account';
 export * from './users/user-list';

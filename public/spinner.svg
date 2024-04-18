@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="129" height="129" style="shape-rendering: auto; display: block;">
+  <g data-idx="1">
+    <g transform="matrix(1,0,0,1,0,0)" data-idx="2">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="3" opacity="0.757573">
+    
+  </rect>
+    </g>
+    <g transform="matrix(0.8412535393757883,0.5406408072719899,-0.5406408072719899,0.8412535393757883,34.96936339481009,-19.09471733238891)" data-idx="5">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="6" opacity="0.848482">
+    
+  </rect>
+    </g>
+    <g transform="matrix(0.4154150350245821,0.9096319852970899,-0.9096319852970899,0.4154150350245821,74.7108475136254,-16.252351016083594)" data-idx="8">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="9" opacity="0.939391">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.1423148023270947,0.989821447049214,-0.989821447049214,-0.1423148023270947,106.60681246881543,7.624667763894031)" data-idx="11">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="12" opacity="0.0303004">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.6548606973510505,0.7557496060633415,-0.7557496060633415,-0.6548606973510505,120.5305151707196,44.95555456438545)" data-idx="14">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="15" opacity="0.121209">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.9594929940771999,0.28173248715185567,-0.28173248715185567,-0.9594929940771999,112.06127406145278,83.88802534626721)" data-idx="17">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="18" opacity="0.212118">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.9594929940771999,-0.2817324871518555,0.2817324871518555,-0.9594929940771999,83.88802534626723,112.06127406145276)" data-idx="20">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="21" opacity="0.303028">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.6548606973510507,-0.7557496060633413,0.7557496060633413,-0.6548606973510507,44.955554564385466,120.5305151707196)" data-idx="23">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="24" opacity="0.393937">
+    
+  </rect>
+    </g>
+    <g transform="matrix(-0.14231493412979176,-0.989821428098843,0.989821428098843,-0.14231493412979176,7.624675301547441,106.60681811143174)" data-idx="26">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="27" opacity="0.484846">
+    
+  </rect>
+    </g>
+    <g transform="matrix(0.4154147927749163,-0.9096320959287735,0.9096320959287735,0.4154147927749163,-16.252344435184483,74.71086515769287)" data-idx="29">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="30" opacity="0.575755">
+    
+  </rect>
+    </g>
+    <g transform="matrix(0.8412536113664589,-0.5406406952523005,0.5406406952523005,0.8412536113664589,-19.094715330937973,34.96935419429208)" data-idx="32">
+      <rect x="47" y="29" rx="3" ry="6" width="6" height="12" fill="#22b2d8" data-idx="33" opacity="0.666664">
+    
+  </rect>
+    </g>
+    <g data-idx="35"></g>
+  </g>
+  <text data-watermark="true" text-anchor="middle" dominant-baseline="middle" stroke-opacity="0.1" fill="black" fill-opacity="0.1" stroke="white" stroke-width="1" font-size="5.0" x="50" y="50" data-idx="36" style="opacity: 1; font-size: 5px;">LOADING.IO</text>
+</svg>
