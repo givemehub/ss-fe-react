@@ -5,6 +5,7 @@ export function TermsAndConditions() {
   // 선언형 프로그래밍
   // 상태 선언 (사용자)
   const [terms, setTerms] = useState(false);
+  const [isSubmited, setIsSubmited] = useState(false);
 
   // 선언된 상태 변경 감지 (리액트)
   // 변경이 감지되면 화면 업데이트 (리액트)
@@ -16,7 +17,13 @@ export function TermsAndConditions() {
       terms,
     };
 
-    console.log(requestData);
+    // 전송 중....
+    setIsSubmited(true);
+
+    setTimeout(() => {
+      console.log(requestData);
+      setIsSubmited(false);
+    }, 1000);
 
     // const formData = new FormData(e.currentTarget);
     // const terms = formData.get('terms');
@@ -48,12 +55,12 @@ export function TermsAndConditions() {
         <label htmlFor="terms">이용 약관에 동의합니다.</label>
       </div>
       <button
-        disabled={!terms}
+        disabled={isSubmited || !terms}
         className="button"
         style={{ marginBlockStart: 20 }}
         type="submit"
       >
-        확인
+        {isSubmited ? '전송 중...' : '확인'}
       </button>
     </form>
   );

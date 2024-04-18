@@ -1,6 +1,5 @@
 import { useState, Component } from 'react';
-import { Description, Headline, Link } from '@/components';
-import { TermsAndConditions } from '@/components/terms-and-conditions.imperative';
+import { Description, Headline, Link, TermsAndConditions } from '@/components';
 import { getPublic } from './utils';
 
 // class state(data)
