@@ -1,12 +1,18 @@
 import { useState } from 'react';
 
+// 리액트에 의해 제어되는 컴포넌트(controlled component)
 export function TermsAndConditions() {
-  // 리액트에 의해 제어되는 컴포넌트(controlled component)
-  const [terms, setTerms] = useState(true);
+  // 명령형 프로그래밍
+  // 상태 선언 (사용자)
+
+  // 선언형 프로그래밍
+  const [terms, setTerms] = useState(false);
+
+  // 선언된 상태 변경 감지 (리액트)
+  // 변경이 감지되면 화면 업데이트 (리액트)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log('폼 제출');
 
     const requestData = {
       terms,
@@ -43,7 +49,14 @@ export function TermsAndConditions() {
         />
         <label htmlFor="terms">이용 약관에 동의합니다.</label>
       </div>
-      <button type="submit">확인</button>
+      <button
+        disabled={!terms}
+        className="button"
+        style={{ marginBlockStart: 20 }}
+        type="submit"
+      >
+        확인
+      </button>
     </form>
   );
 }
