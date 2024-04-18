@@ -1,31 +1,23 @@
-import { useState } from 'react';
-
-// 리액트에 의해 제어되는 컴포넌트(controlled component)
 export function TermsAndConditions() {
-  // 선언형 프로그래밍
-  // 상태 선언 (사용자)
-  const [terms, setTerms] = useState(false);
-
-  // 선언된 상태 변경 감지 (리액트)
-  // 변경이 감지되면 화면 업데이트 (리액트)
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const input = document.getElementById('terms');
+
     const requestData = {
-      terms,
+      terms: input.checked,
     };
 
     console.log(requestData);
-
-    // const formData = new FormData(e.currentTarget);
-    // const terms = formData.get('terms');
-    // console.log({ terms });
   };
 
   const handleChange = (e) => {
-    // console.log('입력이 변경됨');
-    setTerms(e.target.checked);
+    const confirmButton = document.querySelector('button');
+    if (e.target.checked) {
+      confirmButton.removeAttribute('disabled');
+    } else {
+      confirmButton.setAttribute('disabled', true);
+    }
   };
 
   return (
@@ -37,18 +29,11 @@ export function TermsAndConditions() {
         게시합니다.
       </p>
       <div>
-        <input
-          type="checkbox"
-          id="terms"
-          // name="terms"
-          checked={terms}
-          // readOnly
-          onChange={handleChange}
-        />
+        <input type="checkbox" id="terms" onChange={handleChange} />
         <label htmlFor="terms">이용 약관에 동의합니다.</label>
       </div>
       <button
-        disabled={!terms}
+        disabled
         className="button"
         style={{ marginBlockStart: 20 }}
         type="submit"
