@@ -10,22 +10,36 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchData = async () => {
       try {
         setIsLoading(true);
         const response = await fetch(
-          'https://jsonplaceholder.typicode.com/users'
+          'https://jsonplaceholder.typicode.com/users',
+          { signal: abortController.signal }
         );
+
         const data = await response.json();
+
         await delay(500);
         setUsers(data);
         setIsLoading(false);
       } catch (error) {
-        setError(error);
+        const isAbort = error.name.toLowerCase().includes('abort');
+        if (!isAbort) {
+          setError(error);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      // 정리
+      // 이전 요청 중지
+      abortController.abort();
+    };
   }, []);
 
   return (
