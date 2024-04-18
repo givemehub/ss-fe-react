@@ -152,6 +152,7 @@ function __App() {
 function App() {
   return (
     <div
+      data-testid="app"
       style={{
         padding: 40,
       }}
