@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { UserList, UserListCount, UserSearchBox } from '@/components';
-import { Component, useEffect, useRef, useState } from 'react';
+import { StateVsRefVsVariable } from '@/learn';
 import classes from './users.module.css';
 
 export function UsersPage() {
@@ -54,27 +55,6 @@ export function UsersPage() {
     }
   }, [users]);
 
-  // 상태(변경되면 리-렌더 ✅ 및 값 기억)
-  const [count, setCount] = useState(9);
-  const handleCountUp = () => {
-    setCount((c) => c + 1);
-    setCount((c) => c + 1);
-    setCount((c) => c + 1);
-  };
-
-  // 참조(변경되도 리-렌더 ❌ 및 값 기억)
-  const countRef = useRef(9);
-  const handleCountRefUp = () => {
-    countRef.current += 3;
-    console.log('countRef.current = ', countRef.current);
-  };
-
-  let countVariable = 9;
-  const handleCountVariableUp = () => {
-    countVariable += 3;
-    console.log('countVariable = ', countVariable);
-  };
-
   const userList = isLoading ? (
     <div role="alert" className={classes.loading}>
       사용자 정보 로딩 중...
@@ -88,57 +68,14 @@ export function UsersPage() {
   );
 
   return (
-    <div className={classes.component}>
-      <button type="button" onClick={handleCountUp}>
-        count = {count} (+3)
-      </button>
-      <button type="button" onClick={handleCountRefUp}>
-        countRef.current = {countRef.current} (+3)
-      </button>
-      <button type="button" onClick={handleCountVariableUp}>
-        countVariable = {countVariable} (+3)
-      </button>
+    <>
+      <StateVsRefVsVariable />
 
-      <UserSearchBox onChange={handleChange} />
-      {userList}
-      <UserListCount count={searchedUsers.length} total={users.length} />
-    </div>
+      <div className={classes.component} style={{ marginBlockStart: 100 }}>
+        <UserSearchBox onChange={handleChange} />
+        {userList}
+        <UserListCount count={searchedUsers.length} total={users.length} />
+      </div>
+    </>
   );
-}
-
-export class UsersPAGE extends Component {
-  state = {
-    count: 9,
-  };
-
-  count = 9; // useRef()
-
-  render() {
-    return (
-      <>
-        <button
-          type="button"
-          onClick={() => {
-            this.setState(
-              (state) => ({ count: state.count + 1 }),
-              // effect
-              () => {
-                console.log(this.state.count); // 10
-              }
-            );
-          }}
-        >
-          change state
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            this.count += 1;
-          }}
-        >
-          change instance member
-        </button>
-      </>
-    );
-  }
 }

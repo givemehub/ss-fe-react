@@ -1,0 +1,18 @@
+.component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  border-bottom: 1px solid rgba(var(--primary-rgb), 0.2);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  background: rgba(var(--white-rgb), 0.95);
+
+  button {
+    letter-spacing: 0.5px;
+    font-size: 11px;
+  }
+}

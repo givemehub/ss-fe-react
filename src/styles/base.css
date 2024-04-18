@@ -48,7 +48,7 @@ html,
 body {
   max-inline-size: 100dvw;
   overflow-x: hidden;
-  min-height: 100.1dvh;
+  /* min-height: 100.1dvh; */
 }
 
 body {
