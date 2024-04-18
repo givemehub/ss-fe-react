@@ -2,17 +2,10 @@ import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { useState } from 'react';
 import classes from './users.module.css';
 
-export function UsersPage({ data }) {
-  const [users] = useState(data ?? []);
-  const [searchedUsers, setSearchedUsers] = useState(users);
-
-  const handleChange = (search) => {
-    setSearchedUsers(
-      search !== 'reset'
-        ? users.filter((user) => user.name.includes(search))
-        : users
-    );
-  };
+export function UsersPage({ data: users = [] }) {
+  const [search, setSearch] = useState('');
+  const searchedUsers = users.filter((user) => user.name.includes(search));
+  const handleChange = (search) => setSearch(search);
 
   return (
     <div className={classes.component}>
