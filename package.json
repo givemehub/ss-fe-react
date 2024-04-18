@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --ignore-path .gitignore",
     "test": "vitest -r tests",
-    "test:ui": "vitest --ui --exclude _"
+    "test:ui": "vitest --ui --exclude _",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "react": "18.2.0",
@@ -22,6 +23,7 @@
     "@testing-library/react": "15.0.1",
     "@testing-library/user-event": "14.5.2",
     "@vitejs/plugin-react": "4.2.1",
+    "@vitest/coverage-v8": "1.5.0",
     "@vitest/ui": "1.5.0",
     "eslint": "8.57.0",
     "eslint-plugin-react": "7.34.1",
