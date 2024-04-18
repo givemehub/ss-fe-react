@@ -10,15 +10,22 @@
 npx degit yamoo9/ss-fe-react#18-custom-hook <폴더_이름>
 ```
 
-## 클라이언트 사이드 라우팅
+## 애플리케이션 실행
 
-[React Router](https://reactrouter.com) 라이브러리를 사용해 클라이언트 측 라우팅을 구성합니다.
+React 앱 서버와 PocketBase 서버를 동시에 띄우는 `start` 명령을 실행합니다.
 
-## 컨텍스트를 통해 데이터 공유
+```sh
+pnpm start
+```
 
-리액트는 기본적으로 상위 컴포넌트에서 하위 컴포넌트로 props를 전달해 데이터를 공유합니다. 
-하지만 중간 계층에 여러 컴포넌트를 거쳐야 하거나, 여러 컴포넌트에서 동일한 데이터를 공유해야 할 경우 
-props를 건너 건너 전달해야 하므로 매우 번거롭고 불편할 수 있습니다. 
+## 아토믹 디자인
 
-이런 경우 컨텍스트(Context)를 사용하면 명시적으로 props를 전달해주지 않아도 
-상위 컴포넌트가 트리에 있는 어떤 하위 컴포넌트에서나 데이터를 손쉽게 사용할 수 있습니다.
+[원자 설계(Atomic Design)](https://atomicdesign.bradfrost.com/) 방법론에 대해 이야기합니다.
+
+## 스토리북
+
+컴포넌트 및 페이지를 독립적으로 실행하는 프론트엔드 워크숍 [Storybook](https://storybook.js.org/) 사용법을 학습합니다.
+
+## 속성 타입 검사
+
+컴포넌트 속성 타입 검사 라이브러리인 [prop-types](https://www.npmjs.com/package/prop-types)를 사용하는 방법을 살펴봅니다.
