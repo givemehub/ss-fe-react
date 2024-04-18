@@ -1,6 +1,6 @@
-import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { useState } from 'react';
 import classes from './users.module.css';
+import { UserList, UserListCount, UserSearchBox } from '@/components';
 
 export function UsersPage({ data: users = [] }) {
   const [search, setSearch] = useState('');
