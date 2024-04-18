@@ -1,4 +1,4 @@
-export function UserListCount() {
+export function UserListCount({ searchedUsersCount, totalUsersCount }) {
   // return <p> 검색된 갯수 / 총 갯수</p>;
   return (
     <p
@@ -11,7 +11,7 @@ export function UserListCount() {
         border: '1px solid',
       }}
     >
-      0 / 0
+      {searchedUsersCount} / {totalUsersCount}
     </p>
   );
 }

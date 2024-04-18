@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 
-export function UserSearchBox() {
+export function UserSearchBox({ onSearch, onReset }) {
   const searchId = useId();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,13 +10,15 @@ export function UserSearchBox() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+
+    onSearch?.(searchTerm);
     setSearchTerm('');
   };
 
   return (
     <form
       onSubmit={handleSearch}
+      onReset={onReset}
       style={{
         display: 'inline-flex',
         gap: 4,
@@ -37,6 +39,8 @@ export function UserSearchBox() {
       <button type="submit" disabled={!searchTerm}>
         검색
       </button>
+
+      <button type="reset">초기화</button>
     </form>
   );
 }

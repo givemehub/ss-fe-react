@@ -1,16 +1,15 @@
-import { useState } from 'react';
-
-export function UserList() {
-  const [users] = useState([
-    {
-      id: 1,
-      name: '야무',
-    },
-    {
-      id: 2,
-      name: '수잔',
-    },
-  ]);
+export function UserList({ data }) {
+  if (!data)
+    return (
+      <div
+        role="alert"
+        style={{
+          padding: '16px 0',
+        }}
+      >
+        표시할 사용자 정보가 없습니다.
+      </div>
+    );
 
   return (
     <>
@@ -23,7 +22,7 @@ export function UserList() {
           gap: 8,
         }}
       >
-        {users.map((user) => (
+        {data.map((user) => (
           <li
             key={user.id}
             style={{
