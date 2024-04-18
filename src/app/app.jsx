@@ -1,25 +1,30 @@
 import './app.css';
 import usersData from '@/data/users.json';
 import { UsersPage } from '@/pages/users/users';
+import { delay } from '@/utils';
 import { useEffect, useState } from 'react';
 
 function App() {
   const [text, setText] = useState('hello');
   const [users, setUsers] = useState([]);
 
-  // Promise
-  useEffect(() => {
-    // 이펙트의 필요성: 리액트의 외부 시스템과 동기화
-    // 부수 효과 코드
-    // 네트워크 요청/응답
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      // 무한 요청 ()
-      .then((data) => setUsers(data))
-      .catch((error) => console.error(error));
-  }, []);
-
   // Async function
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://jsonplaceholder.typicode.com/users'
+        );
+        const data = await response.json();
+        await delay();
+        setUsers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleEvent = () => {
     // 리액트의 렌더링과 관련없는 처리 가능 (부수 효과: Side Effects)
