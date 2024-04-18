@@ -1,7 +1,4 @@
-import PocketBase from 'pocketbase';
-
-const pb = new PocketBase(import.meta.env.VITE_PB_URL);
-pb.autoCancellation = true;
+import { pb } from './pb';
 
 export async function readAllNotes() {
   try {

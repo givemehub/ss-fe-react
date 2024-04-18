@@ -4,7 +4,7 @@ import useUsers from '@/hooks/useUsers';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 import { UserList, UserListCount, UserSearchBox } from '@/components';
 
-export function UsersPage() {
+export function Component() {
   const changeCountRef = useRef(0);
   const searchBoxHandleRef = useRef(null);
 

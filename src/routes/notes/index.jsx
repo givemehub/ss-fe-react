@@ -4,7 +4,7 @@ import { NoteList } from './components/note-list';
 import useNotes from './hooks/useNotes';
 import { createNoteAction, deleteNoteAction, editNoteAction } from './reducer';
 
-export function NoteApp() {
+export function Component() {
   const { notes, status, error, dispatch } = useNotes();
 
   const handleCreateNote = async (newNote) => {
@@ -23,7 +23,7 @@ export function NoteApp() {
   };
 
   return (
-    <>
+    <div className="scale-90">
       <NoteForm onCreate={handleCreateNote} />
       {status === 'loading' ? (
         <div role="alert" className="px-3 py-5 bg-white mt-6 rounded shadow">
@@ -43,6 +43,6 @@ export function NoteApp() {
           onDelete={handleDeleteNote}
         />
       )}
-    </>
+    </div>
   );
 }

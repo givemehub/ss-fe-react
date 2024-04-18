@@ -1,14 +1,21 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './app/app';
+import { RouterProvider } from 'react-router-dom';
+import router from '@/router';
 import './styles/globals.css';
+import { AuthProvider } from './contexts/auth';
 
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
-      <App />
+      <AuthProvider>
+        <RouterProvider
+          router={router}
+          fallbackElement={<div>페이지 로딩 중...</div>}
+        />
+      </AuthProvider>
     </StrictMode>
   );
 } else {
