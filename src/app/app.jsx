@@ -4,8 +4,39 @@ import { UsersPage } from '@/pages/users/users';
 import { delay } from '@/utils';
 import './app.css';
 
+// 컴포넌트 마크업이 생성
+// 컴포넌트 마크업 -> DOM 마운트
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 업데이트 마크업 재생성
+// 컴포넌트 재성성된 마크업 -> DOM 커밋
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 업데이트 마크업 재생성
+// 컴포넌트 재성성된 마크업 -> DOM 커밋
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 업데이트 마크업 재생성
+// 컴포넌트 재성성된 마크업 -> DOM 커밋
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 업데이트 마크업 재생성
+// 컴포넌트 재성성된 마크업 -> DOM 커밋
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 업데이트 마크업 재생성
+// 컴포넌트 재성성된 마크업 -> DOM 커밋
+// 이펙트 -> 클린업
+// 이펙트 실행
+// 컴포넌트 언마운트
+
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  // 관심사 [네트워크 요청/응답]
+
+  const [isLoading, setIsLoading] = useState(() => {
+    // 지연 처리...
+    return false;
+  });
   const [error, setError] = useState(null);
   const [users, setUsers] = useState([]);
 
