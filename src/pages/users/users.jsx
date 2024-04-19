@@ -14,6 +14,7 @@ export function UsersPage() {
     isLoading,
     error,
     data: users,
+    refetch,
   } = useFetchData('https://jsonplaceholder.typicode.com/users');
 
   const [searchedUsers, setSearchedUsers] = useState(users ?? []);
@@ -52,10 +53,16 @@ export function UsersPage() {
   );
 
   return (
-    <div className={classes.component}>
-      <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
-      {userList}
-      <UserListCount count={searchedUsers?.length} total={users?.length} />
-    </div>
+    <>
+      <button type="button" onClick={refetch}>
+        refetch users
+      </button>
+
+      <div className={classes.component}>
+        <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
+        {userList}
+        <UserListCount count={searchedUsers?.length} total={users?.length} />
+      </div>
+    </>
   );
 }
