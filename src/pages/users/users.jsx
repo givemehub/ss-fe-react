@@ -2,6 +2,7 @@ import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import classes from './users.module.css';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
+import useFetchData from '@/hooks/useFetchData';
 
 export function UsersPage() {
   useDocumentTitle('유저 리스트');
@@ -9,37 +10,11 @@ export function UsersPage() {
   const changeCountRef = useRef(0);
   const searchBoxHandleRef = useRef(null);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [users, setUsers] = useState([]);
-  useEffect(() => {
-    setIsLoading(true);
-    setError(null);
-
-    const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
-    const controller = new AbortController();
-
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(ENDPOINT, { signal: controller.signal });
-        const data = await response.json();
-
-        setUsers(data);
-        setIsLoading(false);
-      } catch (error) {
-        if (!/abort/i.test(error.name)) {
-          setError(error);
-          setIsLoading(false);
-        }
-      }
-    };
-
-    fetchUsers();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  const {
+    isLoading,
+    error,
+    data: users,
+  } = useFetchData('https://jsonplaceholder.typicode.com/users');
 
   const [searchedUsers, setSearchedUsers] = useState(users);
   useEffect(() => {

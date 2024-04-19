@@ -1,48 +1,29 @@
-import { useEffect, useState } from 'react';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
+import useFetchData from '@/hooks/useFetchData';
 
 export function HomePage() {
   useDocumentTitle('홈');
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [albums, setAlbums] = useState([]);
+  const { isLoading, error, data } = useFetchData(
+    'https://jsonplaceholder.typicode.com/albums'
+  );
 
-  useEffect(() => {
-    const controller = new AbortController();
+  if (isLoading) {
+    return <div role="alert">로딩 중....</div>;
+  }
 
-    const fetchAlbums = async () => {
-      setIsLoading(true);
-
-      try {
-        const response = await fetch(
-          'https://jsonplaceholder.typicode.com/albums',
-          {
-            signal: controller.signal,
-          }
-        );
-
-        const data = await response.json();
-        setAlbums(data);
-      } catch (error) {
-        if (!/abort/i.test(error.name)) {
-          setError(error);
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchAlbums();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  if (error) {
+    return <div role="alert">{error.message}</div>;
+  }
 
   return (
     <div className="Home">
       <h2>홈</h2>
+      <ul>
+        {data?.map((item) => (
+          <li key={item.id}>{item.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
