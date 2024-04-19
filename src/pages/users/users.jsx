@@ -4,7 +4,11 @@ import classes from './users.module.css';
 
 export function UsersPage() {
   const changeCountRef = useRef(0);
-  const searchBoxRef = useRef(null);
+  const searchBoxHandleRef = useRef({});
+
+  // useEffect(() => {
+  //   searchBoxRef.current.remove();
+  // }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -55,11 +59,16 @@ export function UsersPage() {
     changeCountRef.current += 1;
     console.log('change count', changeCountRef.current);
 
-    const searchBoxInput = searchBoxRef.current;
-    searchBoxInput.style.borderColor = '#1ed799';
-    setTimeout(() => {
-      searchBoxInput.style.removeProperty('border-color');
-    }, 900);
+    const { highlight, blur } = searchBoxHandleRef.current;
+    highlight();
+    blur();
+    // select();
+
+    // const searchBoxInput = searchBoxRef.current;
+    // searchBoxInput.style.borderColor = '#1ed799';
+    // setTimeout(() => {
+    //   searchBoxInput.style.removeProperty('border-color');
+    // }, 900);
   };
 
   const userList = isLoading ? (
@@ -76,7 +85,7 @@ export function UsersPage() {
 
   return (
     <div className={classes.component}>
-      <UserSearchBox ref={searchBoxRef} onChange={handleChange} />
+      <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
       {userList}
       <UserListCount count={searchedUsers.length} total={users.length} />
     </div>
