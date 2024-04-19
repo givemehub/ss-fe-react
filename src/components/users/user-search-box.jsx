@@ -1,43 +1,43 @@
-import { useId, useLayoutEffect, useRef, useState } from 'react';
+import { forwardRef, useId, useState } from 'react';
 import classes from './user-search-box.module.css';
 
-export function UserSearchBox({ onChange }) {
+export default forwardRef(function UserSearchBox({ onChange }, ref) {
   const id = useId();
   const [search, setSearch] = useState('');
 
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setSearch(value);
-    if (value.length === 0) {
-      onChange?.('reset');
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && search.length > 0) {
-      if (search.trim().length === 0) {
-        alert('유효한 이름이 입력되지 않았습니다. 😳');
-        searchInputRef.current.select();
-        return;
-      }
-
-      onChange?.(search);
-    }
-  };
-
   // const handleChange = (e) => {
   //   const { value } = e.target;
-  //   setSearch(value.trim());
-  //   if (value.trim().length === 0) {
+  //   setSearch(value);
+  //   if (value.length === 0) {
   //     onChange?.('reset');
   //   }
   // };
 
   // const handleKeyDown = (e) => {
-  //   if (e.key === 'Enter' && search.trim().length > 0) {
+  //   if (e.key === 'Enter' && search.length > 0) {
+  //     if (search.trim().length === 0) {
+  //       alert('유효한 이름이 입력되지 않았습니다. 😳');
+  //       searchInputRef.current.select();
+  //       return;
+  //     }
+
   //     onChange?.(search);
   //   }
   // };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setSearch(value.trim());
+    if (value.trim().length === 0) {
+      onChange?.('reset');
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && search.trim().length > 0) {
+      onChange?.(search);
+    }
+  };
 
   // useLayoutEffect vs. useEffect
   //
@@ -57,16 +57,16 @@ export function UserSearchBox({ onChange }) {
   //   };
   // }, []);
 
-  const searchInputRef = useRef(null);
+  // const searchInputRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const { current: searchInput } = searchInputRef;
-    searchInput.focus();
+  // useLayoutEffect(() => {
+  //   const { current: searchInput } = searchInputRef;
+  //   searchInput.focus();
 
-    return () => {
-      searchInput.blur();
-    };
-  }, []);
+  //   return () => {
+  //     searchInput.blur();
+  //   };
+  // }, []);
 
   return (
     <div className={classes.component}>
@@ -74,7 +74,8 @@ export function UserSearchBox({ onChange }) {
         사용자 검색
       </label>
       <input
-        ref={searchInputRef}
+        // ref={searchInputRef}
+        ref={ref}
         type="search"
         placeholder="사용자 이름 입력"
         id={id}
@@ -84,4 +85,4 @@ export function UserSearchBox({ onChange }) {
       />
     </div>
   );
-}
+});

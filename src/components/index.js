@@ -9,4 +9,4 @@ export * from './terms-and-conditions';
 export * from './users/user-account';
 export * from './users/user-list';
 export * from './users/user-list-count';
-export * from './users/user-search-box';
+export { default as UserSearchBox } from './users/user-search-box';

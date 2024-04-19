@@ -1,6 +1,7 @@
 import { UserList, UserListCount, UserSearchBox } from '@/components';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import classes from './users.module.css';
+import { delay } from '@/utils';
 
 export function UsersPage() {
   const changeCountRef = useRef(0);
@@ -19,6 +20,8 @@ export function UsersPage() {
       try {
         const response = await fetch(ENDPOINT, { signal: controller.signal });
         const data = await response.json();
+
+        await delay(1200);
 
         setUsers(data);
         setIsLoading(false);
@@ -67,9 +70,27 @@ export function UsersPage() {
     <UserList users={searchedUsers} />
   );
 
+  const searchBoxRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const searchInput = searchBoxRef.current;
+    if (users.length > 0) {
+      searchInput.style.borderColor = '#e95628';
+    }
+
+    setTimeout(() => {
+      searchInput.style.removeProperty('border-color');
+    }, 1000);
+  }, [users]);
+
+  useEffect(() => {
+    const { current: searchInput } = searchBoxRef;
+    if (searchInput) searchInput.focus();
+  }, []);
+
   return (
     <div className={classes.component}>
-      <UserSearchBox onChange={handleChange} />
+      <UserSearchBox ref={searchBoxRef} onChange={handleChange} />
       {userList}
       <UserListCount count={searchedUsers.length} total={users.length} />
     </div>
