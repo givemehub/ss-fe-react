@@ -16,7 +16,7 @@ export function UsersPage() {
     data: users,
   } = useFetchData('https://jsonplaceholder.typicode.com/users');
 
-  const [searchedUsers, setSearchedUsers] = useState(users);
+  const [searchedUsers, setSearchedUsers] = useState(users ?? []);
   useEffect(() => {
     setSearchedUsers(users);
   }, [users]);
@@ -55,7 +55,7 @@ export function UsersPage() {
     <div className={classes.component}>
       <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
       {userList}
-      <UserListCount count={searchedUsers.length} total={users.length} />
+      <UserListCount count={searchedUsers?.length} total={users?.length} />
     </div>
   );
 }

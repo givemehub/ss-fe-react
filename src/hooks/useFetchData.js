@@ -1,29 +1,43 @@
 import { useEffect, useState } from 'react';
 
+// fetch 옵션 설정 기능 추가
+// 리-패치(refetch) 기능 추가
+// 함수 메모이제이션
+
 export default function useFetchData(endpoint) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
+  const [state, setState] = useState({
+    isLoading: true,
+    error: null,
+    data: null,
+  });
 
   useEffect(() => {
     const controller = new AbortController();
 
     const fetchData = async () => {
-      setIsLoading(true);
-
       try {
         const response = await fetch(endpoint, {
           signal: controller.signal,
         });
 
         const responseData = await response.json();
-        setData(responseData);
+        setState((prevState) => {
+          return {
+            ...prevState,
+            isLoading: false,
+            data: responseData,
+          };
+        });
       } catch (error) {
         if (!/abort/i.test(error.name)) {
-          setError(error);
+          setState((prevState) => {
+            return {
+              ...prevState,
+              isLoading: false,
+              error,
+            };
+          });
         }
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -34,9 +48,5 @@ export default function useFetchData(endpoint) {
     };
   }, [endpoint]);
 
-  return {
-    isLoading,
-    error,
-    data,
-  };
+  return state; // { isLoading, erorr, data }
 }
