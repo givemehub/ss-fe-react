@@ -1,43 +1,26 @@
 import { UserList, UserListCount, UserSearchBox } from '@/components';
-import { useEffect, useRef, useState } from 'react';
-import classes from './users.module.css';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import useFetchData from '@/hooks/useFetchData';
+import { useUsers } from './useUsers';
+import classes from './users.module.css';
+import { useRef } from 'react';
 
 export function UsersPage() {
   useDocumentTitle('유저 리스트');
 
-  const changeCountRef = useRef(0);
-  const searchBoxHandleRef = useRef(null);
-
   const {
     isLoading,
     error,
-    data: users,
+    users,
+    searchedUsers,
+    handleChange: onChange,
     refetch,
-  } = useFetchData('https://jsonplaceholder.typicode.com/users');
+  } = useUsers();
 
-  const [searchedUsers, setSearchedUsers] = useState(users ?? []);
-  useEffect(() => {
-    setSearchedUsers(users);
-  }, [users]);
+  const searchHandleRef = useRef(null);
 
   const handleChange = (search) => {
-    setSearchedUsers(
-      search !== 'reset'
-        ? users.filter((user) =>
-            user.name.toLowerCase().includes(search.toLowerCase())
-          )
-        : users
-    );
-
-    changeCountRef.current += 1;
-
-    const searchBoxHandle = searchBoxHandleRef.current;
-    searchBoxHandle.highlight(/* {
-      color: '#d02578',
-      timeout: 1500,
-    } */);
+    onChange?.(search);
+    searchHandleRef.current.highlight();
   };
 
   const userList = isLoading ? (
@@ -59,7 +42,7 @@ export function UsersPage() {
       </button>
 
       <div className={classes.component}>
-        <UserSearchBox ref={searchBoxHandleRef} onChange={handleChange} />
+        <UserSearchBox ref={searchHandleRef} onChange={handleChange} />
         {userList}
         <UserListCount count={searchedUsers?.length} total={users?.length} />
       </div>

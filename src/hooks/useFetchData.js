@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
 export default function useFetchData(endpoint, options) {
-  console.log('call useFetchData');
-
   const [state, setState] = useState({
     isLoading: true,
     error: null,
@@ -46,8 +44,6 @@ export default function useFetchData(endpoint, options) {
       controller.abort();
     };
   }, [endpoint, options]);
-
-  // 리패칭 시, 함수가 다시 생성되는 것을 방지하려면?
 
   const refetchData = useCallback(
     async (options) => {

@@ -1,15 +1,9 @@
 import useDocumentTitle from '@/hooks/useDocumentTitle';
-import useFetchData from '@/hooks/useFetchData';
+import { useAlbums } from './useAlbums';
 
 export function HomePage() {
   useDocumentTitle('홈');
-
-  const {
-    isLoading,
-    error,
-    data: albums,
-    refetch,
-  } = useFetchData('https://jsonplaceholder.typicode.com/albums');
+  const { isLoading, error, refetch, albums } = useAlbums();
 
   if (isLoading) {
     return <div role="alert">로딩 중....</div>;
@@ -19,12 +13,10 @@ export function HomePage() {
     return <div role="alert">{error.message}</div>;
   }
 
-  const handleRefetch = () => refetch();
-
   return (
     <div className="Home">
       <h2>홈</h2>
-      <button type="button" onClick={handleRefetch}>
+      <button type="button" onClick={refetch}>
         refetch albums
       </button>
       <ul>

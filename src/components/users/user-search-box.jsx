@@ -31,7 +31,7 @@ export const UserSearchBox = forwardRef(function UserSearchBox(
     const { value } = e.target;
     setSearch(value.trim());
     if (value.trim().length === 0) {
-      onChange?.('reset');
+      onChange?.('');
     }
   };
 
