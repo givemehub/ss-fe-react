@@ -1,7 +1,8 @@
-import { UserList, UserListCount, UserSearchBox } from '@/components';
+import { UserList, UserListCount } from '@/components';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import classes from './users.module.css';
 import { delay } from '@/utils';
+import UserSearchBox from '@/components/users/user-search-box';
 
 export function UsersPage() {
   const changeCountRef = useRef(0);
@@ -74,12 +75,13 @@ export function UsersPage() {
 
   useLayoutEffect(() => {
     const searchInput = searchBoxRef.current;
-    if (users.length > 0) {
+
+    if (users.length > 0 && searchInput) {
       searchInput.style.borderColor = '#e95628';
     }
 
     setTimeout(() => {
-      searchInput.style.removeProperty('border-color');
+      searchInput?.style.removeProperty('border-color');
     }, 1000);
   }, [users]);
 
@@ -90,7 +92,7 @@ export function UsersPage() {
 
   return (
     <div className={classes.component}>
-      <UserSearchBox ref={searchBoxRef} onChange={handleChange} />
+      <UserSearchBox searchInputRef={searchBoxRef} onChange={handleChange} />
       {userList}
       <UserListCount count={searchedUsers.length} total={users.length} />
     </div>
