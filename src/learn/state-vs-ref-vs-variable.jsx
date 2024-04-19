@@ -17,6 +17,7 @@ export function StateVsRefVsVariable() {
     console.log('countRef.current = ', countRef.current);
   };
 
+  // 함수 내부의 지역 변수 (리-렌더 시, 초기화)
   let countVariable = 9;
   const handleCountVariableUp = () => {
     countVariable += 3;

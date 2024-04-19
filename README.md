@@ -16,4 +16,4 @@ npx degit yamoo9/ss-fe-react#15-using-ref <폴더_이름>
 리액트에 의해 관리되는 DOM 엘리먼트 접근/조작이 필요한 경우 참조(ref)를 활용할 수 있습니다.
 
 - 상태를 사용하지 않고, 리-렌더링 되더라도 값을 기억하려면? [React.useRef](https://react.dev/reference/react/useRef) 훅을 사용합니다.
-- 리액트에서 관리되는 DOM 엘리먼트에 접근해 조작할 경우에도 React.useRef 훅을 사용합니다.
+- 리액트에서 관리되는 DOM 엘리먼트에 접근해 조작할 경우에도 `React.useRef` 훅과 `ref` 속성(prop)을 사용합니다.

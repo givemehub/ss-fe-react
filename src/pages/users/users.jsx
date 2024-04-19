@@ -3,6 +3,10 @@ import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { StateVsRefVsVariable } from '@/learn';
 import classes from './users.module.css';
 
+// useRef 용도
+// - 리액트의 렌더링 프로세스에 영향을 미치지 않으면서 어떤 값을 기억하고자 할 때
+// - 이전, 이후 값 비교
+
 export function UsersPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
