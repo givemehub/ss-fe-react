@@ -1,8 +1,11 @@
 import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import classes from './users.module.css';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 export function UsersPage() {
+  useDocumentTitle('유저 리스트');
+
   const changeCountRef = useRef(0);
   const searchBoxHandleRef = useRef(null);
 
