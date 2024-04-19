@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'react';
-
-// fetch 옵션 설정 기능 추가
-// 리-패치(refetch) 기능 추가
-// 함수 메모이제이션
+import { useCallback, useEffect, useState } from 'react';
 
 export default function useFetchData(endpoint, options) {
+  console.log('call useFetchData');
+
   const [state, setState] = useState({
     isLoading: true,
     error: null,
@@ -49,28 +47,33 @@ export default function useFetchData(endpoint, options) {
     };
   }, [endpoint, options]);
 
-  const refetchData = async (options) => {
-    try {
-      const response = await fetch(endpoint, options);
-      const responseData = await response.json();
+  // 리패칭 시, 함수가 다시 생성되는 것을 방지하려면?
 
-      setState((prevState) => {
-        return {
-          ...prevState,
-          isLoading: false,
-          data: responseData,
-        };
-      });
-    } catch (error) {
-      setState((prevState) => {
-        return {
-          ...prevState,
-          isLoading: false,
-          error,
-        };
-      });
-    }
-  };
+  const refetchData = useCallback(
+    async (options) => {
+      try {
+        const response = await fetch(endpoint, options);
+        const responseData = await response.json();
+
+        setState((prevState) => {
+          return {
+            ...prevState,
+            isLoading: false,
+            data: responseData,
+          };
+        });
+      } catch (error) {
+        setState((prevState) => {
+          return {
+            ...prevState,
+            isLoading: false,
+            error,
+          };
+        });
+      }
+    },
+    [endpoint]
+  );
 
   return {
     ...state,
