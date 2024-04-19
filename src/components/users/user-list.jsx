@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { UserListItem } from './user-list-item';
 import classes from './user-list.module.css';
 
 // 사용자 이름 입력 후, Enter 키를 누르면
@@ -19,28 +19,5 @@ export function UserList({ users = [] }) {
         <UserListItem key={user.id} user={user} />
       ))}
     </ul>
-  );
-}
-
-function UserListItem({ user }) {
-  const itemRef = useRef(null);
-
-  useEffect(() => {
-    const item = itemRef.current;
-    item.style.backgroundColor = '#ffdf5f42';
-
-    const timerId = setTimeout(() => {
-      item.style.removeProperty('background-color');
-    }, 1000);
-
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, []);
-
-  return (
-    <li ref={itemRef}>
-      <a href={`/users/${user.id}`}>{user.name}</a>
-    </li>
   );
 }

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { UserList, UserListCount, UserSearchBox } from '@/components';
 import { StateVsRefVsVariable } from '@/learn';
 import classes from './users.module.css';
+import VanillaTilt from 'vanilla-tilt';
 
 // useRef 용도
 // - 리액트의 렌더링 프로세스에 영향을 미치지 않으면서 어떤 값을 기억하고자 할 때
@@ -71,11 +72,33 @@ export function UsersPage() {
     <UserList users={searchedUsers} />
   );
 
+  // Vanilla Tilt (ref, useRef, useEffect)
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const { current: container } = containerRef;
+
+    // init
+    VanillaTilt.init(container, {
+      glare: true,
+      'max-glare': 0.54,
+    });
+
+    return () => {
+      // destroy
+      container.vanillaTilt.destory?.();
+    };
+  }, []);
+
   return (
     <>
       <StateVsRefVsVariable />
 
-      <div className={classes.component} style={{ marginBlockStart: 100 }}>
+      <div
+        ref={containerRef}
+        className={classes.component}
+        style={{ marginBlockStart: 100 }}
+      >
         <UserSearchBox onChange={handleChange} />
         {userList}
         <UserListCount count={searchedUsers.length} total={users.length} />
