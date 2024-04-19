@@ -1,5 +1,5 @@
+import { useId, useLayoutEffect, useRef, useState } from 'react';
 import classes from './user-search-box.module.css';
-import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 
 export function UserSearchBox({ onChange }) {
   const id = useId();
@@ -7,17 +7,37 @@ export function UserSearchBox({ onChange }) {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    setSearch(value.trim());
-    if (value.trim().length === 0) {
+    setSearch(value);
+    if (value.length === 0) {
       onChange?.('reset');
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && search.trim().length > 0) {
+    if (e.key === 'Enter' && search.length > 0) {
+      if (search.trim().length === 0) {
+        alert('유효한 이름이 입력되지 않았습니다. 😳');
+        searchInputRef.current.select();
+        return;
+      }
+
       onChange?.(search);
     }
   };
+
+  // const handleChange = (e) => {
+  //   const { value } = e.target;
+  //   setSearch(value.trim());
+  //   if (value.trim().length === 0) {
+  //     onChange?.('reset');
+  //   }
+  // };
+
+  // const handleKeyDown = (e) => {
+  //   if (e.key === 'Enter' && search.trim().length > 0) {
+  //     onChange?.(search);
+  //   }
+  // };
 
   // useLayoutEffect vs. useEffect
   //
@@ -30,20 +50,21 @@ export function UserSearchBox({ onChange }) {
   // 2.1 useLayoutEffect
   // 3. browser painting
   // 3.1 useEffect
+  // useEffect(() => {
+  //   console.log('effect: ', searchInputRef.current);
+  //   return () => {
+  //     console.log('effect cleanup');
+  //   };
+  // }, []);
 
   const searchInputRef = useRef(null);
 
-  useEffect(() => {
-    console.log('effect: ', searchInputRef.current);
-    return () => {
-      console.log('effect cleanup');
-    };
-  }, []);
-
   useLayoutEffect(() => {
-    console.log('layout effect: ', searchInputRef.current);
+    const { current: searchInput } = searchInputRef;
+    searchInput.focus();
+
     return () => {
-      console.log('layout effect cleanup');
+      searchInput.blur();
     };
   }, []);
 
