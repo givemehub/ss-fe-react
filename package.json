@@ -5,12 +5,14 @@
   "description": "리액트 라이브러리를 사용해 사용자 인터페이스를 구축하는 방법을 학습합니다.",
   "version": "0.1.0",
   "scripts": {
+    "start": "run-p dev pocketbase",
     "dev": "vite serve",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --ignore-path .gitignore",
     "test": "vitest -r tests",
-    "test:ui": "vitest --ui --exclude _"
+    "test:ui": "vitest --ui --exclude _",
+    "pocketbase": "./pocketbase/pocketbase serve"
   },
   "dependencies": {
     "autoprefixer": "10.4.19",
@@ -31,6 +33,8 @@
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "jsdom": "24.0.0",
+    "npm-run-all": "4.1.5",
+    "pocketbase": "0.21.1",
     "vitest": "1.5.0"
   }
 }

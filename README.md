@@ -7,7 +7,7 @@
 학습 저장소를 복제하는 명령어를 복사하여 터미널에 붙여넣고 실행합니다.
 
 ```sh
-npx degit yamoo9/ss-fe-react#18-custom-hook <폴더_이름>
+npx degit yamoo9/ss-fe-react#19-note-app-with-reducer <폴더_이름>
 ```
 
 ## 상태 로직을 리듀서로 관리하기
